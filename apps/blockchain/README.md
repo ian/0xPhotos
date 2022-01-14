@@ -1,19 +1,6 @@
 Tradable Cash Flow
 ==================
 
-The Tradeable cashflow provides the deployer with an NFT. Whoever is the owner
-of the NFT will receive a consolidated stream for all the streams the contract
-receives. It is composed of two contracts: TradeableCashflow and RedirectAll.
-The first contains the NFT logic (which is mainly inherited from OpenZeppelin)
-and the second contains the logic which condenses the streams, and has a
-function which changes the receiver of the condensed stream.
-
-# Usage
-
-## Run tests
-
-```bash
-yarn install
-yarn build
-yarn test
-```
+Marketplace Address = 0x1dd14A3Ccc7D57852b7C11a9B633Be4e3aDC063F
+Asset Address = 0x414b20594BDA01EA5903E16b56A82A28FCb80897
+License Address = 0x30647E50F220F745d3E89e7BdfcbC5cc0C09A878
