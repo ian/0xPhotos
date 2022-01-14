@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Masonry from 'react-masonry-css'
 
 export default function Grid(props) {
@@ -11,7 +12,11 @@ export default function Grid(props) {
     >
       {elements.map((e, i) => (
         <div className="" key={`element-${i}`}>
-          <img src={e.url} />
+          <Link href={`/assets/${e.tokenId}`}>
+            <a>
+              <img src={e.url} />
+            </a>
+          </Link>
         </div>
       ))}
     </Masonry>
