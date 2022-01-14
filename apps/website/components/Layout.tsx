@@ -1,12 +1,12 @@
 import Header from './Header'
 
 export default function Layout(props) {
-  const { children } = props
+  const { className, children } = props
 
   return (
     <div>
       <Header />
-      <div className="">{children}</div>
+      <div className={className}>{children}</div>
     </div>
   )
 }
