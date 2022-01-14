@@ -7,7 +7,7 @@ export default function Mint() {
   const handleMint = () => {
     // https://docs.moralis.io/moralis-server/web3-sdk/native
     console.log('Mint')
-    web3?.
+    // web3?.
   }
 
   return (

@@ -9,8 +9,8 @@ export default function Grid(props) {
       className="my-masonry-grid"
       columnClassName="my-masonry-grid_column"
     >
-      {elements.map((e) => (
-        <div className="">
+      {elements.map((e, i) => (
+        <div className="" key={`element-${i}`}>
           <img src={e.url} />
         </div>
       ))}
