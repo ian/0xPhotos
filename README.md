@@ -1,5 +1,15 @@
 # 0xPhotos
 
+## TODO
+
+- [x] pnpm structure
+- [x] basic layout (tailwind)
+- [x] Moralis login
+- [] Moralis IPFS upload
+- [] Moralis Mint - IPFS token => Asset contract mint() call
+- [] Marketplace show Assets
+- [] Purchase asset (mint license)
+
 ## UI
 
 - https://mantine.dev/

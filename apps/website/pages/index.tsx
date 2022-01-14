@@ -1,5 +1,8 @@
 import Head from 'next/head'
+import Grid from '../components/Grid'
 import Layout from '../components/Layout'
+
+import { FAKE_MARKETPLACE } from '../lib/fake'
 
 export default function Home() {
   return (
@@ -10,7 +13,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1 className="mb-10">Homepage</h1>
+      {/* <h1 className="mb-10">Homepage</h1> */}
+      <Grid elements={FAKE_MARKETPLACE} />
     </Layout>
   )
 }
