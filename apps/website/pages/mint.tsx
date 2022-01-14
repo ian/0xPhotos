@@ -2,12 +2,15 @@ import { useState } from 'react'
 import { useMoralis } from 'react-moralis'
 import { FileUploader } from 'baseui/file-uploader'
 
+import { useFakeProgress } from '../hooks/useFakeProgress'
+
 import Layout from '../components/Layout'
 import AssetForm from '../components/AssetForm'
 
 export default function Mint() {
-  const { Moralis, web3 } = useMoralis()
-  const [isUploading, setUploading] = useState(false)
+  const { Moralis } = useMoralis()
+  const [progressAmount, startFakeProgress, stopFakeProgress] =
+    useFakeProgress()
 
   return (
     <Layout className="max-w-4xl m-auto mt-10">
@@ -15,9 +18,15 @@ export default function Mint() {
       <div className="grid grid-cols-2 gap-20">
         <FileUploader
           accept="image/*"
-          disabled={isUploading}
+          disabled={!!progressAmount}
+          progressAmount={progressAmount}
+          progressMessage={
+            progressAmount ? `Uploading... ${progressAmount}% of 100%` : ''
+          }
+          onCancel={stopFakeProgress}
           onDrop={(acceptedFiles, rejectedFiles) => {
-            setUploading(true)
+            startFakeProgress()
+
             const data = acceptedFiles[0]
             const file = new Moralis.File(data.name, data)
             file
@@ -30,7 +39,7 @@ export default function Mint() {
                 console.log({ ipfs, hash })
               })
               .catch(console.error)
-              .finally(() => setUploading(false))
+              .finally(() => stopFakeProgress())
           }}
         />
         <AssetForm />

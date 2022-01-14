@@ -5,7 +5,7 @@
 - [x] pnpm structure
 - [x] basic layout (tailwind)
 - [x] Moralis login
-- [] Moralis IPFS upload
+- [x] Moralis IPFS upload
 - [] Moralis Mint - IPFS token => Asset contract mint() call
 - [] Marketplace show Assets
 - [] Purchase asset (mint license)
