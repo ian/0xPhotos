@@ -13,7 +13,7 @@ import Layout from '../components/Layout'
 import { useState } from 'react'
 
 export default function Home() {
-  const [isModalOpen, setModalOpen] = useState(true)
+  const [isModalOpen, setModalOpen] = useState(false)
 
   return (
     <Layout>
