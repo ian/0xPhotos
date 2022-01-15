@@ -69,7 +69,7 @@ export default function Asset() {
             <hr className="my-10" />
 
             <div>
-              <h5 className="font-semibold mb-5">Choose your license</h5>
+              <h5 className="font-semibold mb-5">Choose your payment type</h5>
               <div className="grid grid-cols-2 gap-10 mb-20">
                 <div className="border-2 border-black rounded-xl shadow text-center p-5">
                   <p className="mb-2 h-8">
