@@ -30,12 +30,18 @@ type UseWeb3 = {
   uploadImage: (file: File) => Promise<DeployedIPFS>
   uploadJSON: (json: object) => Promise<DeployedIPFS>
   walletAddress?: string
+  truncatedWalletAddress?: string
 } & MoralisContextValue
 
 export default function useWeb3(): UseWeb3 {
   const moralis = useMoralis()
   const { user, web3, Moralis, isWeb3Enabled, enableWeb3 } = moralis
   const walletAddress = user?.attributes?.ethAddress
+  const truncatedWalletAddress =
+    walletAddress &&
+    walletAddress.slice(0, 3) +
+      '...' +
+      walletAddress.slice(walletAddress.length - 3, walletAddress.length)
 
   useEffect(() => {
     if (!isWeb3Enabled) enableWeb3()
@@ -125,6 +131,7 @@ export default function useWeb3(): UseWeb3 {
   return {
     ...moralis,
     walletAddress,
+    truncatedWalletAddress,
     deployIncomeStream,
     mintAssetNFT,
     uploadImage,

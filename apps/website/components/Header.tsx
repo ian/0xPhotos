@@ -1,17 +1,14 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment } from 'react'
-import { Popover, Transition } from '@headlessui/react'
-import { useMoralis } from 'react-moralis'
-import {
-  ChartBarIcon,
-  CloudUploadIcon,
-  MenuIcon,
-  ViewGridIcon,
-  XIcon,
-} from '@heroicons/react/outline'
+import { Popover } from '@headlessui/react'
+import { ChartBarIcon, MenuIcon, ViewGridIcon } from '@heroicons/react/outline'
 import Link from 'next/link'
-import { Button } from 'baseui/button'
 import { useRouter } from 'next/router'
+
+import { Avatar } from 'baseui/avatar'
+import { Button } from 'baseui/button'
+import { ChevronDown } from 'baseui/icon'
+
+import useWeb3 from '../hooks/useWeb3'
 
 const solutions = [
   {
@@ -30,7 +27,7 @@ const solutions = [
 ]
 
 export default function Header() {
-  const { authenticate, isAuthenticated, user } = useMoralis()
+  const { authenticate, isAuthenticated, truncatedWalletAddress } = useWeb3()
   const router = useRouter()
 
   const handleLogin = async () => {
@@ -58,8 +55,11 @@ export default function Header() {
 
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0 space-x-10">
             <Link href="/mint">
-              <a className="flex space-x-2 items-center">Upload NFT</a>
+              <a className="flex space-x-2 items-center border-2 border-transparent hover:border-gray-500 px-3  py-1 rounded-full">
+                Upload NFT
+              </a>
             </Link>
+
             {!isAuthenticated && (
               <Button kind="secondary" shape="pill" onClick={handleLogin}>
                 Connect Wallet
@@ -67,19 +67,28 @@ export default function Header() {
             )}
 
             {isAuthenticated && (
-              <Button
-                kind="secondary"
-                shape="pill"
-                onClick={() => router.push('/dashboard')}
-              >
-                Dashboard
-              </Button>
+              <div className="border-2 border-gray-500 rounded-full pr-2.5 flex items-center space-x-2 cursor-pointer">
+                <Avatar
+                  name="Jane Doe"
+                  size="scale900"
+                  src="https://avatars.dicebear.com/api/human/yard.svg?width=285&mood=happy"
+                />
+                <span>{truncatedWalletAddress}</span>
+                <ChevronDown size="" />
+              </div>
+              // <Button
+              //   kind="secondary"
+              //   shape="pill"
+              //   onClick={() => router.push('/dashboard')}
+              // >
+              //   Dashboard
+              // </Button>
             )}
           </div>
         </div>
       </div>
 
-      <Transition
+      {/* <Transition
         as={Fragment}
         enter="duration-200 ease-out"
         enterFrom="opacity-0 scale-95"
@@ -147,7 +156,7 @@ export default function Header() {
             </div>
           </div>
         </Popover.Panel>
-      </Transition>
+      </Transition> */}
     </Popover>
   )
 }
