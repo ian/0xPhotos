@@ -50,7 +50,7 @@ export function Provider({ children }) {
       appId={process.env.NEXT_PUBLIC_MORALIS_APP_ID}
       serverUrl={process.env.NEXT_PUBLIC_MORALIS_SERVER_URL}
     >
-      {children}
+      <Web3Provider>{children}</Web3Provider>
     </MoralisProvider>
   )
 }
@@ -60,6 +60,7 @@ export const useWeb3 = (): UseWeb3 => useContext(Context)
 export default function useProvider(): UseWeb3 {
   const moralis = useMoralis()
   const { user, web3, Moralis, isWeb3Enabled, enableWeb3 } = moralis
+
   const walletAddress = user?.attributes?.ethAddress
   const truncatedWalletAddress =
     walletAddress &&
@@ -68,7 +69,7 @@ export default function useProvider(): UseWeb3 {
       walletAddress.slice(walletAddress.length - 3, walletAddress.length)
 
   const requireWeb3Enabled = () => {
-    if (!isWeb3Enabled) enableWeb3()
+    if (!isWeb3Enabled) return enableWeb3()
   }
 
   const uploadImage = async (file) => {
@@ -106,7 +107,7 @@ export default function useProvider(): UseWeb3 {
   }
 
   const deployIncomeStream = async () => {
-    requireWeb3Enabled()
+    await requireWeb3Enabled()
 
     const { abi, bytecode } = TradeableCashflowContract
 
@@ -143,7 +144,7 @@ export default function useProvider(): UseWeb3 {
 
   // allows the market to transfer ownership of the income stream
   const approveMarket = async (streamAddress) => {
-    requireWeb3Enabled()
+    await requireWeb3Enabled()
 
     const address = '0x1dd14A3Ccc7D57852b7C11a9B633Be4e3aDC063F'
     const { abi, bytecode } = TradeableCashflowContract
@@ -156,7 +157,7 @@ export default function useProvider(): UseWeb3 {
   }
 
   const mintAssetNFT = async (tokenUri, price, streamAddress) => {
-    requireWeb3Enabled()
+    await requireWeb3Enabled()
 
     // const { ethAddress } = user.attributes
     const _price = web3.utils.toWei(price)
@@ -172,6 +173,9 @@ export default function useProvider(): UseWeb3 {
   }
 
   const mintLicenseNFT = async (tokenUri) => {
+    await requireWeb3Enabled()
+
+    console.log({ web3, Moralis, user })
     // const { ethAddress } = user.attributes
     const address = '0x30647E50F220F745d3E89e7BdfcbC5cc0C09A878'
     const { abi, bytecode } = LicensesContract

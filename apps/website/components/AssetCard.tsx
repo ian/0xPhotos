@@ -7,6 +7,8 @@ export default function AssetCard(props) {
   //   </div>
   // )
 
+  console.log({ asset })
+
   return (
     <div
       key={asset.title}
@@ -22,6 +24,7 @@ export default function AssetCard(props) {
             <p className="mt-3 text-base text-gray-500">{asset.description}</p>
           </a>
         </div>
+
         {/* <div className="mt-6 flex items-center">
           <div className="flex-shrink-0">
             <a href={asset.author.href}>
