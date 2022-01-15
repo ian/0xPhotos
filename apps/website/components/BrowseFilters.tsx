@@ -1,6 +1,6 @@
 import { Accordion, Panel } from 'baseui/accordion'
 
-export default function GridFilters() {
+export default function BrowseFilters() {
   return (
     <Accordion onChange={({ expanded }) => console.log(expanded)} accordion>
       <Panel title="Orientation">Content 1</Panel>

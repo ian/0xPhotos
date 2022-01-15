@@ -1,9 +1,10 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import Grid from '../components/Grid'
-import GridFilters from '../components/GridFilters'
-import Layout from '../components/Layout'
-import { algoliaSearch } from '../lib/algolia'
+// import Grid from '../../components/Grid'
+import BrowseFilters from '../../components/BrowseFilters'
+import Layout from '../../components/Layout'
+import { algoliaSearch } from '../../lib/algolia'
 
 export default function Browse() {
   const [elements, setElements] = useState(null)
@@ -23,13 +24,20 @@ export default function Browse() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <h1 className="mb-10">Homepage</h1> */}
       <div className="flex p-5 gap-5">
         <div className="" style={{ width: 400 }}>
-          <GridFilters />
+          <BrowseFilters />
         </div>
-        <div className="w-full">
-          <Grid elements={elements} />
+        <div className="masonry-2-col w-full">
+          {elements?.map((e, i) => (
+            <div className="mb-5" key={`element-${i}`}>
+              <Link href={`/browse/${e.token_id}`}>
+                <a>
+                  <img src={e.external_data.image} />
+                </a>
+              </Link>
+            </div>
+          ))}
         </div>
       </div>
     </Layout>

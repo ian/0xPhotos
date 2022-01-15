@@ -43,19 +43,7 @@ export default function Asset() {
   return (
     <Layout>
       <div className="grid grid-cols-3">
-        <div
-          className="col-span-2 p-20 bg-gray-500 overflow-hidden"
-          style={
-            {
-              // backgroundImage: `url(${asset?.url})`,
-              // filter: `blur(10px)`,
-              // backgroundPosition: 'center',
-              // backgroundRepeat: 'no-repeat',
-              // backgroundSize: 'cover',
-              // height: '100%',
-            }
-          }
-        >
+        <div className="col-span-2 p-20 bg-gray-500 overflow-hidden">
           <img src={asset?.url} className="w-full shadow-2xl" />
         </div>
         <div>
@@ -63,12 +51,6 @@ export default function Asset() {
             Purchase a license
           </h2>
 
-          {/* <div className="bg-gray-100 p-5 flex justify-between gap-x-2">
-            <button className="border rounded p-2 w-full bg-gray-400">
-              Editorial
-            </button>
-            <button className="border rounded p-2 w-full">Custom</button>
-          </div> */}
           <div className="p-5">
             {/* <div className="border rounded shadow divide-y-2">
               <div className="p-5 flex flex-col">Small</div>
