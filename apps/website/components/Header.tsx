@@ -53,11 +53,29 @@ export default function Header() {
             </Popover.Button>
           </div>
 
-          <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0 space-x-10">
+          <div className="hidden md:flex items-center justify-end md:flex-grow lg:w-0 space-x-5">
+            <Link href="/browse">
+              <a className="flex space-x-2 items-center border-2 border-transparent hover:border-gray-500 px-3  py-1 rounded-full whitespace-nowrap">
+                Browse
+              </a>
+            </Link>
+
+            <Link href="/live">
+              <a className="flex space-x-2 items-center border-2 border-transparent hover:border-gray-500 px-3  py-1 rounded-full whitespace-nowrap">
+                Live Events
+              </a>
+            </Link>
+
+            <Link href="/contributors">
+              <a className="flex space-x-2 items-center border-2 border-transparent hover:border-gray-500 px-3  py-1 rounded-full whitespace-nowrap">
+                Contributors
+              </a>
+            </Link>
+
             {isAuthenticated ? (
               <>
                 <Link href="/mint">
-                  <a className="flex space-x-2 items-center border-2 border-transparent hover:border-gray-500 px-3  py-1 rounded-full">
+                  <a className="flex space-x-2 items-center border-2 border-transparent hover:border-gray-500 px-3  py-1 rounded-full whitespace-nowrap">
                     Upload NFT
                   </a>
                 </Link>
@@ -74,7 +92,7 @@ export default function Header() {
             ) : (
               <>
                 <a
-                  className="flex space-x-2 items-center border-2 bg-white text-black cursor-pointer hover:bg-gray-300 px-3 py-1 rounded-full"
+                  className="flex space-x-2 items-center border-2 bg-white text-black cursor-pointer hover:bg-gray-300 px-3 py-1 rounded-full whitespace-nowrap"
                   onClick={handleLogin}
                 >
                   Connect Wallet
