@@ -11,6 +11,7 @@ export default function Asset() {
   const router = useRouter()
   const { id } = router.query
   const asset = FAKE_MARKETPLACE.find((f) => f.tokenId === id)
+  const [isSubmitting, setSubmitting] = useState(false)
   const { uploadJSON, mintLicenseNFT } = useWeb3()
 
   const [jsonIPFS, setJsonIPFS] = useState(null)
@@ -26,14 +27,15 @@ export default function Asset() {
   }
 
   const handleSubmit = async () => {
+    setSubmitting(true)
     console.debug('Uploading JSON to IPFS')
     const { url: jsonIPFS } = await uploadJSON(formData)
     setJsonIPFS(jsonIPFS)
     console.log('JSON IPFS: ', jsonIPFS)
-    handleMint(jsonIPFS)
+    handleMint(jsonIPFS).finally(() => setSubmitting(false))
   }
 
-  const handleMint = (jsonIPFS) => {
+  const handleMint = async (jsonIPFS) => {
     console.debug('Minting License NFT')
     mintLicenseNFT(jsonIPFS).then((tx) => {
       console.log('Minted License NFT: ', tx)
@@ -90,7 +92,11 @@ export default function Asset() {
                 </div>
               </div>
               {/* @ts-ignore className works IDK why it's complaining */}
-              <Button onClick={handleSubmit} className="w-full">
+              <Button
+                onClick={handleSubmit}
+                className="w-full"
+                isLoading={isSubmitting}
+              >
                 Purchase License
               </Button>
             </div>
