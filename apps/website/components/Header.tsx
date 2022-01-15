@@ -4,6 +4,7 @@ import { Popover, Transition } from '@headlessui/react'
 import { useMoralis } from 'react-moralis'
 import {
   ChartBarIcon,
+  CloudUploadIcon,
   MenuIcon,
   ViewGridIcon,
   XIcon,
@@ -55,9 +56,12 @@ export default function Header() {
             </Popover.Button>
           </div>
 
-          <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+          <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0 space-x-10">
+            <Link href="/mint">
+              <a className="flex space-x-2 items-center">Upload NFT</a>
+            </Link>
             {!isAuthenticated && (
-              <Button kind="secondary" onClick={handleLogin}>
+              <Button kind="secondary" shape="pill" onClick={handleLogin}>
                 Connect Wallet
               </Button>
             )}
@@ -65,6 +69,7 @@ export default function Header() {
             {isAuthenticated && (
               <Button
                 kind="secondary"
+                shape="pill"
                 onClick={() => router.push('/dashboard')}
               >
                 Dashboard
