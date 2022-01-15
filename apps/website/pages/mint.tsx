@@ -22,7 +22,8 @@ export default function Mint() {
     useFakeProgress()
 
   const [file, setFile] = useState(null)
-  const [ipfs, setIPFS] = useState(null)
+  const [jsonIPFS, setJsonIPFS] = useState(null)
+  const [streamAddress, setStreamAddress] = useState(null)
 
   const handleDrop = async (acceptedFiles, rejectedFiles) => {
     startFakeProgress()
@@ -31,6 +32,7 @@ export default function Mint() {
 
     const streamContract = await deployIncomeStream()
     const streamAddress = streamContract.address
+    setStreamAddress(streamAddress)
     const image = acceptedFiles[0]
 
     console.debug('Uploading Image to IPFS')
@@ -42,7 +44,7 @@ export default function Mint() {
     console.debug('Uploading JSON to IPFS')
 
     setFile(image)
-    setIPFS({ url, hash })
+    // setIPFS({ url, hash })
 
     const { url: jsonIPFS } = await uploadJSON({
       // Our fields
@@ -60,9 +62,12 @@ export default function Mint() {
       fee_recipient: walletAddress, // Where seller fees will be paid to.
     })
 
-    console.debug('Minting NFT')
+    setJsonIPFS(jsonIPFS)
+  }
 
-    await mintAssetNFT(jsonIPFS, '0.0001', streamAddress)
+  const handleMint = () => {
+    console.debug('Minting NFT')
+    mintAssetNFT(jsonIPFS, '0.0001', streamAddress)
   }
 
   return (
@@ -86,7 +91,12 @@ export default function Mint() {
           )}
         </div>
 
-        <AssetForm />
+        <div>
+          <AssetForm />
+          <Button disabled={!jsonIPFS} onClick={handleMint}>
+            Mint NFT
+          </Button>
+        </div>
       </div>
     </Layout>
   )
