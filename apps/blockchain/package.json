@@ -1,5 +1,5 @@
 {
-  "name": "tradeable-cashflow",
+  "name": "blockchain",
   "version": "1.0.0",
   "description": "SuperApp demo - a simple money stream lottery",
   "main": "scripts/demo.js",

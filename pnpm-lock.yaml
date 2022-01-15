@@ -42,6 +42,7 @@ importers:
       '@walletconnect/web3-provider': ^1.7.1
       autoprefixer: ^10.4.2
       baseui: ^10.7.2
+      blockchain: ^1.0.6
       eslint: 8.6.0
       eslint-config-next: 12.0.8
       headlessui: link:headlessui
@@ -62,6 +63,7 @@ importers:
       '@heroicons/react': 1.0.5_react@17.0.2
       '@walletconnect/web3-provider': 1.7.1
       baseui: 10.7.2_18b9fae9192809454029c5aad07d3a92
+      blockchain: 1.0.6
       headlessui: link:headlessui
       moralis: 0.0.184_d4897b84b63b2f40e24e0d294c9d14ec
       next: 12.0.8_react-dom@17.0.2+react@17.0.2
@@ -3578,6 +3580,16 @@ packages:
     dev: true
     optional: true
 
+  /blockchain/1.0.6:
+    resolution: {integrity: sha1-nx2aQWueVAAo2TbAzQKC5X4MoYE=}
+    engines: {node: '>=0.6'}
+    hasBin: true
+    dependencies:
+      debug: 0.7.4
+      underscore: 1.4.4
+      websocket: 1.0.34
+    dev: false
+
   /bluebird/3.7.2:
     resolution: {integrity: sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==}
 
@@ -4719,6 +4731,10 @@ packages:
       object-assign: 4.1.0
     dev: true
     optional: true
+
+  /debug/0.7.4:
+    resolution: {integrity: sha1-BuHqgILCyxTjmAbiLi9vdX+Srzk=}
+    dev: false
 
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
@@ -13283,6 +13299,10 @@ packages:
       has-bigints: 1.0.1
       has-symbols: 1.0.2
       which-boxed-primitive: 1.0.2
+
+  /underscore/1.4.4:
+    resolution: {integrity: sha1-YaajIBBiKvoHljvzJSA88SI51gQ=}
+    dev: false
 
   /union-value/1.0.1:
     resolution: {integrity: sha512-tJfXmxMeWYnczCVs7XAEvIV7ieppALdyepWMkHkwciRpZraG/xwT+s2JN8+pr1+8jCRf80FFzvr+MpQeeoF4Xg==}

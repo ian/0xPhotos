@@ -1,18 +1,25 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useMoralis } from 'react-moralis'
 import { FileUploader } from 'baseui/file-uploader'
 import { Button } from 'baseui/button'
 
 import { useFakeProgress } from '../hooks/useFakeProgress'
+import { deploy } from '../lib/incomeStream'
 
 import Layout from '../components/Layout'
 import AssetForm from '../components/AssetForm'
 
 export default function Mint() {
-  const { Moralis } = useMoralis()
+  const { user, web3, Moralis, isWeb3Enabled, enableWeb3 } = useMoralis()
+
+  console.log({ web3, Moralis })
 
   const [file, setFile] = useState(null)
   const [ipfs, setIPFS] = useState(null)
+
+  useEffect(() => {
+    if (!isWeb3Enabled) enableWeb3()
+  }, [isWeb3Enabled])
 
   const [progressAmount, startFakeProgress, stopFakeProgress] =
     useFakeProgress()
@@ -37,19 +44,24 @@ export default function Mint() {
                 startFakeProgress()
 
                 const data = acceptedFiles[0]
-                new Moralis.File(data.name, data)
-                  .saveIPFS()
-                  .then((res) => {
-                    const ipfs = res.ipfs()
-                    const hash = res.hash()
+                deploy(user, web3).then(({ address }) => {
+                  uploadImageToIPFS(data, Moralis)
+                    .then(({ ipfs, hash }) => {
+                      setFile(data)
+                      setIPFS({ ipfs, hash })
 
-                    // File has been uploaded, here's hash and url
-                    console.log({ ipfs, hash })
-                    setFile(data)
-                    setIPFS({ ipfs, hash })
-                  })
-                  .catch(console.error)
-                  .finally(() => stopFakeProgress())
+                      uploadJSONToIPFS(
+                        {
+                          imageHash: hash,
+                          imageUrl: ipfs,
+                          inputStreamAddress: address,
+                        },
+                        Moralis,
+                      ).then(console.log)
+                    })
+                    .catch(console.error)
+                    .finally(() => stopFakeProgress())
+                })
               }}
             />
           )}
@@ -71,3 +83,19 @@ const FilePreview = ({ file, onClear }) => (
     </div>
   </div>
 )
+
+async function uploadImageToIPFS(file, Moralis) {
+  return new Moralis.File(file.name, file).saveIPFS().then((res) => {
+    const ipfs = res.ipfs()
+    const hash = res.hash()
+
+    // File has been uploaded, here's hash and url
+    return { ipfs, hash }
+  })
+}
+
+async function uploadJSONToIPFS(json, Moralis) {
+  return new Moralis.File('file.json', {
+    base64: btoa(JSON.stringify(json)),
+  }).saveIPFS()
+}
