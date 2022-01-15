@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useMoralis } from 'react-moralis'
 import Grid from '../components/Grid'
+import GridFilters from '../components/GridFilters'
 import Layout from '../components/Layout'
 
 import { FAKE_MARKETPLACE } from '../lib/fake'
@@ -15,9 +16,11 @@ export default function Home() {
       </Head>
 
       {/* <h1 className="mb-10">Homepage</h1> */}
-      <div className="flex p-5">
-        <div className="w-1/5"></div>
-        <div className="w-4/5">
+      <div className="flex p-5 gap-5">
+        <div className="" style={{ width: 400 }}>
+          <GridFilters />
+        </div>
+        <div className="w-full">
           <Grid elements={FAKE_MARKETPLACE} />
         </div>
       </div>
