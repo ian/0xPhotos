@@ -2,8 +2,6 @@
 import ASSET_ABI from '../abi/Assets.json'
 import TRADEABLECASHFLOW_ARTIFACT from '../abi/TradeableCashflow.json'
 
-console.log({ ASSET_ABI })
-
 export async function deploy(user, web3) {
   const { ethAddress } = user.attributes
   // Connect to the Metamask Ethereum node

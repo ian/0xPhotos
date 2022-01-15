@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { useMoralis } from 'react-moralis'
 import Grid from '../components/Grid'
 import Layout from '../components/Layout'
 
