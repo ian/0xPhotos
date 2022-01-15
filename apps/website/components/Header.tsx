@@ -69,7 +69,7 @@ export default function Header() {
 
             <Link href="/contributors">
               <a className="flex space-x-2 items-center border-2 border-transparent hover:border-gray-500 px-3  py-1 rounded-full whitespace-nowrap">
-                Contributors
+                Photographers
               </a>
             </Link>
 
@@ -80,7 +80,7 @@ export default function Header() {
                     Upload NFT
                   </a>
                 </Link> */}
-                <div className="border-2 border-gray-500 rounded-full pr-4 flex items-center space-x-2 cursor-pointer">
+                {/* <div className="border-2 border-gray-500 rounded-full pr-4 flex items-center space-x-2 cursor-pointer">
                   <img
                     alt={truncatedWalletAddress}
                     src="https://avatars.dicebear.com/api/human/yard.svg?width=285&mood=happy"
@@ -89,7 +89,21 @@ export default function Header() {
 
                   <span>{truncatedWalletAddress}</span>
                   <ChevronDownIcon className="w-10 h-10" />
-                </div>
+                </div> */}
+                <Link href="/dashboard">
+                  <a
+                    className="flex space-x-2 items-center border-2 cursor-pointer hover:bg-gray-800 px-3 py-1 rounded-full whitespace-nowrap"
+                    onClick={handleLogin}
+                  >
+                    <img
+                      alt={truncatedWalletAddress}
+                      src="https://avatars.dicebear.com/api/human/yard.svg?width=285&mood=happy"
+                      className="w-10 h-10 rounded-full"
+                    />
+
+                    <span className="w-28 ">{truncatedWalletAddress}</span>
+                  </a>
+                </Link>
               </>
             ) : (
               <>
