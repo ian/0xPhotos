@@ -1,12 +1,13 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Popover } from '@headlessui/react'
-import { ChartBarIcon, MenuIcon, ViewGridIcon } from '@heroicons/react/outline'
+import {
+  ChartBarIcon,
+  MenuIcon,
+  ViewGridIcon,
+  ChevronDownIcon,
+} from '@heroicons/react/outline'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-
-import { Avatar } from 'baseui/avatar'
-import { Button } from 'baseui/button'
-import { ChevronDown } from 'baseui/icon'
 
 import useWeb3 from '../hooks/useWeb3'
 
@@ -75,18 +76,19 @@ export default function Header() {
             {isAuthenticated ? (
               <>
                 <Link href="/mint">
-                  <a className="flex space-x-2 items-center border-2 border-transparent hover:border-gray-500 px-3  py-1 rounded-full whitespace-nowrap">
+                  <a className="flex space-x-2 items-center border-2 border-transparent hover:border-gray-500 px-3 py-1 rounded-full whitespace-nowrap">
                     Upload NFT
                   </a>
                 </Link>
-                <div className="border-2 border-gray-500 rounded-full pr-2.5 flex items-center space-x-2 cursor-pointer">
-                  <Avatar
-                    name="Jane Doe"
-                    size="scale900"
+                <div className="border-2 border-gray-500 rounded-full pr-4 flex items-center space-x-2 cursor-pointer">
+                  <img
+                    alt={truncatedWalletAddress}
                     src="https://avatars.dicebear.com/api/human/yard.svg?width=285&mood=happy"
+                    className="w-10 h-10 rounded-full"
                   />
+
                   <span>{truncatedWalletAddress}</span>
-                  <ChevronDown size="" />
+                  <ChevronDownIcon className="w-10 h-10" />
                 </div>
               </>
             ) : (
