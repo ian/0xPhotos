@@ -5,8 +5,6 @@ import GridFilters from '../components/GridFilters'
 import Layout from '../components/Layout'
 import { algoliaSearch } from '../lib/algolia'
 
-import { FAKE_MARKETPLACE } from '../lib/fake'
-
 export default function Browse() {
   const [elements, setElements] = useState(null)
 

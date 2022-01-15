@@ -67,29 +67,14 @@ export default function Header() {
               </a>
             </Link>
 
-            <Link href="/contributors">
-              <a className="flex space-x-2 items-center border-2 border-transparent hover:border-gray-500 px-3  py-1 rounded-full whitespace-nowrap">
-                Photographers
-              </a>
-            </Link>
-
             {isAuthenticated ? (
               <>
-                {/* <Link href="/mint">
+                <Link href="/mint">
                   <a className="flex space-x-2 items-center border-2 border-transparent hover:border-gray-500 px-3 py-1 rounded-full whitespace-nowrap">
                     Upload NFT
                   </a>
-                </Link> */}
-                {/* <div className="border-2 border-gray-500 rounded-full pr-4 flex items-center space-x-2 cursor-pointer">
-                  <img
-                    alt={truncatedWalletAddress}
-                    src="https://avatars.dicebear.com/api/human/yard.svg?width=285&mood=happy"
-                    className="w-10 h-10 rounded-full"
-                  />
+                </Link>
 
-                  <span>{truncatedWalletAddress}</span>
-                  <ChevronDownIcon className="w-10 h-10" />
-                </div> */}
                 <Link href="/dashboard">
                   <a
                     className="flex space-x-2 items-center border-2 cursor-pointer hover:bg-gray-800 px-3 py-1 rounded-full whitespace-nowrap"
@@ -107,6 +92,12 @@ export default function Header() {
               </>
             ) : (
               <>
+                <Link href="/contributors">
+                  <a className="flex space-x-2 items-center border-2 border-transparent hover:border-gray-500 px-3  py-1 rounded-full whitespace-nowrap">
+                    Photographers
+                  </a>
+                </Link>
+
                 <a
                   className="flex space-x-2 items-center border-2 bg-white text-black cursor-pointer hover:bg-gray-300 px-3 py-1 rounded-full whitespace-nowrap"
                   onClick={handleLogin}
