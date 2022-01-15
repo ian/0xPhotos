@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react'
-import { useMoralis, MoralisContextValue } from 'react-moralis'
+import { createContext, useContext, useEffect, useState } from 'react'
+import { useMoralis, MoralisContextValue, MoralisProvider } from 'react-moralis'
 
 import AssetsContract from '../abi/Assets.json'
 import LicensesContract from '../abi/Licenses.json'
-import MarketContract from '../abi/Marketplace.json'
+// import MarketContract from '../abi/Marketplace.json'
 import TradeableCashflowContract from '../abi/TradeableCashflow.json'
 
 // type Contract = {
@@ -37,7 +37,27 @@ type UseWeb3 = {
   truncatedWalletAddress?: string
 } & MoralisContextValue
 
-export default function useWeb3(): UseWeb3 {
+const Context = createContext<any>(null)
+
+function Web3Provider({ children }: any) {
+  const value = useProvider()
+  return <Context.Provider value={value}>{children}</Context.Provider>
+}
+
+export function Provider({ children }) {
+  return (
+    <MoralisProvider
+      appId={process.env.NEXT_PUBLIC_MORALIS_APP_ID}
+      serverUrl={process.env.NEXT_PUBLIC_MORALIS_SERVER_URL}
+    >
+      {children}
+    </MoralisProvider>
+  )
+}
+
+export const useWeb3 = (): UseWeb3 => useContext(Context)
+
+export default function useProvider(): UseWeb3 {
   const moralis = useMoralis()
   const { user, web3, Moralis, isWeb3Enabled, enableWeb3 } = moralis
   const walletAddress = user?.attributes?.ethAddress
