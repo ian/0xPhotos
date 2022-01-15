@@ -129,32 +129,24 @@ const ApplyModal = ({ isOpen, onClose }) => {
         Dialog: {
           style: ({ $theme }) => ({
             borderRadius: 0,
-            // width: '80%',
+            padding: 0,
             width: width * 0.6 + 'px',
             height: height * 0.8 + 'px',
+            overflow: 'hidden',
           }),
         },
       }}
     >
-      {/* <ModalHeader>Apply to be a Photographer</ModalHeader> */}
-      <ModalBody>
-        <iframe
-          src="https://docs.google.com/forms/d/e/1FAIpQLSdVxav78TvR0bgxDzYfQNaYZsoMhAytGVWPbIcRTcHqlebpOQ/viewform?embedded=true"
-          width="100%"
-          // height="700px"
-          // width={width * 0.8 + 'px'}
-          height={height * 0.8 + 'px'}
-          frameBorder="0"
-          marginHeight={0}
-          marginWidth={0}
-        >
-          Loading…
-        </iframe>
-      </ModalBody>
-      {/* <ModalFooter>
-        <ModalButton kind="tertiary">Cancel</ModalButton>
-        <ModalButton>Okay</ModalButton>
-      </ModalFooter> */}
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLSdVxav78TvR0bgxDzYfQNaYZsoMhAytGVWPbIcRTcHqlebpOQ/viewform?embedded=true"
+        width="100%"
+        height={height * 0.8 + 'px'}
+        frameBorder="0"
+        marginHeight={0}
+        marginWidth={0}
+      >
+        Loading…
+      </iframe>
     </Modal>
   )
 }
