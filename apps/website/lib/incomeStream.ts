@@ -37,7 +37,7 @@ export async function deploy(user, web3) {
 export function mint(user, web3, tokenUri, streamAddress) {
   const { ethAddress } = user.attributes
   const _price = web3.utils.toWei('0.0001')
-  const ASSET_CONTRACT = '0x414b20594BDA01EA5903E16b56A82A28FCb80897'
+  const ASSET_CONTRACT = '0x506cd4e5B94bD24b2f60D96e5ED6430c5302188c'
   const { abi, bytecode } = ASSET_ABI
   const mintAsset = new web3.eth.Contract(abi, ASSET_CONTRACT)
 

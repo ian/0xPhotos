@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.4;
 
 import '@openzeppelin/contracts/utils/Counters.sol';
+
 import '@openzeppelin/contracts/security/ReentrancyGuard.sol';
 
 interface ITradeableCashFlow {
@@ -87,6 +88,9 @@ contract Marketplace is ReentrancyGuard {
 
         // Retrieve the current asset id
         uint256 itemId = _AssetIds.current();
+
+        //Approve market to handle income stream transfer ownership function
+        ITradeableCashFlow(AssetFluidStreamContract).approve(address(this), 1);
 
         // Create the market asset
         idToMarketAsset[itemId] = MarketAsset(

@@ -36201,18 +36201,18 @@
         3574
       ],
       "RedirectAll": [
-        5216
+        5227
       ],
       "TradeableCashflow": [
-        5279
+        5290
       ]
     },
-    "id": 5280,
+    "id": 5291,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 5218,
+        "id": 5229,
         "literals": [
           "solidity",
           "^",
@@ -36225,16 +36225,16 @@
       {
         "absolutePath": "project:/contracts/RedirectAll.sol",
         "file": "./RedirectAll.sol",
-        "id": 5223,
+        "id": 5234,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 5280,
-        "sourceUnit": 5217,
+        "scope": 5291,
+        "sourceUnit": 5228,
         "src": "59:98:29",
         "symbolAliases": [
           {
             "foreign": {
-              "id": 5219,
+              "id": 5230,
               "name": "RedirectAll",
               "nodeType": "Identifier",
               "overloadedDeclarations": [],
@@ -36245,7 +36245,7 @@
           },
           {
             "foreign": {
-              "id": 5220,
+              "id": 5231,
               "name": "ISuperToken",
               "nodeType": "Identifier",
               "overloadedDeclarations": [],
@@ -36256,7 +36256,7 @@
           },
           {
             "foreign": {
-              "id": 5221,
+              "id": 5232,
               "name": "IConstantFlowAgreementV1",
               "nodeType": "Identifier",
               "overloadedDeclarations": [],
@@ -36267,7 +36267,7 @@
           },
           {
             "foreign": {
-              "id": 5222,
+              "id": 5233,
               "name": "ISuperfluid",
               "nodeType": "Identifier",
               "overloadedDeclarations": [],
@@ -36282,16 +36282,16 @@
       {
         "absolutePath": "@openzeppelin/contracts/token/ERC721/ERC721.sol",
         "file": "@openzeppelin/contracts/token/ERC721/ERC721.sol",
-        "id": 5225,
+        "id": 5236,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 5280,
+        "scope": 5291,
         "sourceUnit": 949,
         "src": "159:71:29",
         "symbolAliases": [
           {
             "foreign": {
-              "id": 5224,
+              "id": 5235,
               "name": "ERC721",
               "nodeType": "Identifier",
               "overloadedDeclarations": [],
@@ -36308,25 +36308,25 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 5226,
+              "id": 5237,
               "name": "ERC721",
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 948,
               "src": "264:6:29"
             },
-            "id": 5227,
+            "id": 5238,
             "nodeType": "InheritanceSpecifier",
             "src": "264:6:29"
           },
           {
             "baseName": {
-              "id": 5228,
+              "id": 5239,
               "name": "RedirectAll",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 5216,
+              "referencedDeclaration": 5227,
               "src": "272:11:29"
             },
-            "id": 5229,
+            "id": 5240,
             "nodeType": "InheritanceSpecifier",
             "src": "272:11:29"
           }
@@ -36335,10 +36335,10 @@
         "contractDependencies": [],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 5279,
+        "id": 5290,
         "linearizedBaseContracts": [
-          5279,
-          5216,
+          5290,
+          5227,
           2048,
           2677,
           948,
@@ -36354,7 +36354,7 @@
         "nodes": [
           {
             "body": {
-              "id": 5262,
+              "id": 5273,
               "nodeType": "Block",
               "src": "566:34:29",
               "statements": [
@@ -36362,11 +36362,11 @@
                   "expression": {
                     "arguments": [
                       {
-                        "id": 5258,
+                        "id": 5269,
                         "name": "owner",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 5231,
+                        "referencedDeclaration": 5242,
                         "src": "583:5:29",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -36375,7 +36375,7 @@
                       },
                       {
                         "hexValue": "31",
-                        "id": 5259,
+                        "id": 5270,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -36401,7 +36401,7 @@
                           "typeString": "int_const 1"
                         }
                       ],
-                      "id": 5257,
+                      "id": 5268,
                       "name": "_mint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
@@ -36412,7 +36412,7 @@
                         "typeString": "function (address,uint256)"
                       }
                     },
-                    "id": 5260,
+                    "id": 5271,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -36427,24 +36427,24 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 5261,
+                  "id": 5272,
                   "nodeType": "ExpressionStatement",
                   "src": "577:15:29"
                 }
               ]
             },
-            "id": 5263,
+            "id": 5274,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [
               {
                 "arguments": [
                   {
-                    "id": 5247,
+                    "id": 5258,
                     "name": "_name",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 5233,
+                    "referencedDeclaration": 5244,
                     "src": "505:5:29",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_memory_ptr",
@@ -36452,11 +36452,11 @@
                     }
                   },
                   {
-                    "id": 5248,
+                    "id": 5259,
                     "name": "_symbol",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 5235,
+                    "referencedDeclaration": 5246,
                     "src": "512:7:29",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_memory_ptr",
@@ -36464,10 +36464,10 @@
                     }
                   }
                 ],
-                "id": 5249,
+                "id": 5260,
                 "kind": "baseConstructorSpecifier",
                 "modifierName": {
-                  "id": 5246,
+                  "id": 5257,
                   "name": "ERC721",
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 948,
@@ -36479,11 +36479,11 @@
               {
                 "arguments": [
                   {
-                    "id": 5251,
+                    "id": 5262,
                     "name": "host",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 5238,
+                    "referencedDeclaration": 5249,
                     "src": "533:4:29",
                     "typeDescriptions": {
                       "typeIdentifier": "t_contract$_ISuperfluid_$3574",
@@ -36491,11 +36491,11 @@
                     }
                   },
                   {
-                    "id": 5252,
+                    "id": 5263,
                     "name": "cfa",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 5241,
+                    "referencedDeclaration": 5252,
                     "src": "539:3:29",
                     "typeDescriptions": {
                       "typeIdentifier": "t_contract$_IConstantFlowAgreementV1_$2219",
@@ -36503,11 +36503,11 @@
                     }
                   },
                   {
-                    "id": 5253,
+                    "id": 5264,
                     "name": "acceptedToken",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 5244,
+                    "referencedDeclaration": 5255,
                     "src": "544:13:29",
                     "typeDescriptions": {
                       "typeIdentifier": "t_contract$_ISuperToken_$3031",
@@ -36515,11 +36515,11 @@
                     }
                   },
                   {
-                    "id": 5254,
+                    "id": 5265,
                     "name": "owner",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 5231,
+                    "referencedDeclaration": 5242,
                     "src": "559:5:29",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -36527,13 +36527,13 @@
                     }
                   }
                 ],
-                "id": 5255,
+                "id": 5266,
                 "kind": "baseConstructorSpecifier",
                 "modifierName": {
-                  "id": 5250,
+                  "id": 5261,
                   "name": "RedirectAll",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 5216,
+                  "referencedDeclaration": 5227,
                   "src": "521:11:29"
                 },
                 "nodeType": "ModifierInvocation",
@@ -36544,17 +36544,17 @@
             "nameLocation": "-1:-1:-1",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 5245,
+              "id": 5256,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 5231,
+                  "id": 5242,
                   "mutability": "mutable",
                   "name": "owner",
                   "nameLocation": "321:5:29",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5263,
+                  "scope": 5274,
                   "src": "313:13:29",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -36563,7 +36563,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 5230,
+                    "id": 5241,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "313:7:29",
@@ -36577,12 +36577,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 5233,
+                  "id": 5244,
                   "mutability": "mutable",
                   "name": "_name",
                   "nameLocation": "351:5:29",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5263,
+                  "scope": 5274,
                   "src": "337:19:29",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -36591,7 +36591,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 5232,
+                    "id": 5243,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "337:6:29",
@@ -36604,12 +36604,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 5235,
+                  "id": 5246,
                   "mutability": "mutable",
                   "name": "_symbol",
                   "nameLocation": "381:7:29",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5263,
+                  "scope": 5274,
                   "src": "367:21:29",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -36618,7 +36618,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 5234,
+                    "id": 5245,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "367:6:29",
@@ -36631,12 +36631,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 5238,
+                  "id": 5249,
                   "mutability": "mutable",
                   "name": "host",
                   "nameLocation": "411:4:29",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5263,
+                  "scope": 5274,
                   "src": "399:16:29",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -36645,10 +36645,10 @@
                     "typeString": "contract ISuperfluid"
                   },
                   "typeName": {
-                    "id": 5237,
+                    "id": 5248,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 5236,
+                      "id": 5247,
                       "name": "ISuperfluid",
                       "nodeType": "IdentifierPath",
                       "referencedDeclaration": 3574,
@@ -36665,12 +36665,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 5241,
+                  "id": 5252,
                   "mutability": "mutable",
                   "name": "cfa",
                   "nameLocation": "451:3:29",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5263,
+                  "scope": 5274,
                   "src": "426:28:29",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -36679,10 +36679,10 @@
                     "typeString": "contract IConstantFlowAgreementV1"
                   },
                   "typeName": {
-                    "id": 5240,
+                    "id": 5251,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 5239,
+                      "id": 5250,
                       "name": "IConstantFlowAgreementV1",
                       "nodeType": "IdentifierPath",
                       "referencedDeclaration": 2219,
@@ -36699,12 +36699,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 5244,
+                  "id": 5255,
                   "mutability": "mutable",
                   "name": "acceptedToken",
                   "nameLocation": "477:13:29",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5263,
+                  "scope": 5274,
                   "src": "465:25:29",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -36713,10 +36713,10 @@
                     "typeString": "contract ISuperToken"
                   },
                   "typeName": {
-                    "id": 5243,
+                    "id": 5254,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 5242,
+                      "id": 5253,
                       "name": "ISuperToken",
                       "nodeType": "IdentifierPath",
                       "referencedDeclaration": 3031,
@@ -36735,12 +36735,12 @@
               "src": "302:195:29"
             },
             "returnParameters": {
-              "id": 5256,
+              "id": 5267,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "566:0:29"
             },
-            "scope": 5279,
+            "scope": 5290,
             "src": "291:309:29",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -36751,7 +36751,7 @@
               947
             ],
             "body": {
-              "id": 5277,
+              "id": 5288,
               "nodeType": "Block",
               "src": "845:38:29",
               "statements": [
@@ -36759,11 +36759,11 @@
                   "expression": {
                     "arguments": [
                       {
-                        "id": 5274,
+                        "id": 5285,
                         "name": "to",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 5267,
+                        "referencedDeclaration": 5278,
                         "src": "872:2:29",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -36778,18 +36778,18 @@
                           "typeString": "address"
                         }
                       ],
-                      "id": 5273,
+                      "id": 5284,
                       "name": "_changeReceiver",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5042,
+                      "referencedDeclaration": 5053,
                       "src": "856:15:29",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
                         "typeString": "function (address)"
                       }
                     },
-                    "id": 5275,
+                    "id": 5286,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -36804,13 +36804,13 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 5276,
+                  "id": 5287,
                   "nodeType": "ExpressionStatement",
                   "src": "856:19:29"
                 }
               ]
             },
-            "id": 5278,
+            "id": 5289,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -36818,23 +36818,23 @@
             "nameLocation": "721:20:29",
             "nodeType": "FunctionDefinition",
             "overrides": {
-              "id": 5271,
+              "id": 5282,
               "nodeType": "OverrideSpecifier",
               "overrides": [],
               "src": "836:8:29"
             },
             "parameters": {
-              "id": 5270,
+              "id": 5281,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 5265,
+                  "id": 5276,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5278,
+                  "scope": 5289,
                   "src": "752:7:29",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -36843,7 +36843,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 5264,
+                    "id": 5275,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "752:7:29",
@@ -36857,12 +36857,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 5267,
+                  "id": 5278,
                   "mutability": "mutable",
                   "name": "to",
                   "nameLocation": "787:2:29",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5278,
+                  "scope": 5289,
                   "src": "779:10:29",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -36871,7 +36871,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 5266,
+                    "id": 5277,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "779:7:29",
@@ -36885,12 +36885,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 5269,
+                  "id": 5280,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5278,
+                  "scope": 5289,
                   "src": "800:7:29",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -36899,7 +36899,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 5268,
+                    "id": 5279,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "800:7:29",
@@ -36914,19 +36914,19 @@
               "src": "741:85:29"
             },
             "returnParameters": {
-              "id": 5272,
+              "id": 5283,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "845:0:29"
             },
-            "scope": 5279,
+            "scope": 5290,
             "src": "712:171:29",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           }
         ],
-        "scope": 5280,
+        "scope": 5291,
         "src": "234:652:29",
         "usedErrors": []
       }
@@ -36949,18 +36949,18 @@
         3574
       ],
       "RedirectAll": [
-        5216
+        5227
       ],
       "TradeableCashflow": [
-        5279
+        5290
       ]
     },
-    "id": 5280,
+    "id": 5291,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 5218,
+        "id": 5229,
         "literals": [
           "solidity",
           "^",
@@ -36973,16 +36973,16 @@
       {
         "absolutePath": "project:/contracts/RedirectAll.sol",
         "file": "./RedirectAll.sol",
-        "id": 5223,
+        "id": 5234,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 5280,
-        "sourceUnit": 5217,
+        "scope": 5291,
+        "sourceUnit": 5228,
         "src": "59:98:29",
         "symbolAliases": [
           {
             "foreign": {
-              "id": 5219,
+              "id": 5230,
               "name": "RedirectAll",
               "nodeType": "Identifier",
               "overloadedDeclarations": [],
@@ -36993,7 +36993,7 @@
           },
           {
             "foreign": {
-              "id": 5220,
+              "id": 5231,
               "name": "ISuperToken",
               "nodeType": "Identifier",
               "overloadedDeclarations": [],
@@ -37004,7 +37004,7 @@
           },
           {
             "foreign": {
-              "id": 5221,
+              "id": 5232,
               "name": "IConstantFlowAgreementV1",
               "nodeType": "Identifier",
               "overloadedDeclarations": [],
@@ -37015,7 +37015,7 @@
           },
           {
             "foreign": {
-              "id": 5222,
+              "id": 5233,
               "name": "ISuperfluid",
               "nodeType": "Identifier",
               "overloadedDeclarations": [],
@@ -37030,16 +37030,16 @@
       {
         "absolutePath": "@openzeppelin/contracts/token/ERC721/ERC721.sol",
         "file": "@openzeppelin/contracts/token/ERC721/ERC721.sol",
-        "id": 5225,
+        "id": 5236,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 5280,
+        "scope": 5291,
         "sourceUnit": 949,
         "src": "159:71:29",
         "symbolAliases": [
           {
             "foreign": {
-              "id": 5224,
+              "id": 5235,
               "name": "ERC721",
               "nodeType": "Identifier",
               "overloadedDeclarations": [],
@@ -37056,25 +37056,25 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 5226,
+              "id": 5237,
               "name": "ERC721",
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 948,
               "src": "264:6:29"
             },
-            "id": 5227,
+            "id": 5238,
             "nodeType": "InheritanceSpecifier",
             "src": "264:6:29"
           },
           {
             "baseName": {
-              "id": 5228,
+              "id": 5239,
               "name": "RedirectAll",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 5216,
+              "referencedDeclaration": 5227,
               "src": "272:11:29"
             },
-            "id": 5229,
+            "id": 5240,
             "nodeType": "InheritanceSpecifier",
             "src": "272:11:29"
           }
@@ -37083,10 +37083,10 @@
         "contractDependencies": [],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 5279,
+        "id": 5290,
         "linearizedBaseContracts": [
-          5279,
-          5216,
+          5290,
+          5227,
           2048,
           2677,
           948,
@@ -37102,7 +37102,7 @@
         "nodes": [
           {
             "body": {
-              "id": 5262,
+              "id": 5273,
               "nodeType": "Block",
               "src": "566:34:29",
               "statements": [
@@ -37110,11 +37110,11 @@
                   "expression": {
                     "arguments": [
                       {
-                        "id": 5258,
+                        "id": 5269,
                         "name": "owner",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 5231,
+                        "referencedDeclaration": 5242,
                         "src": "583:5:29",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -37123,7 +37123,7 @@
                       },
                       {
                         "hexValue": "31",
-                        "id": 5259,
+                        "id": 5270,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -37149,7 +37149,7 @@
                           "typeString": "int_const 1"
                         }
                       ],
-                      "id": 5257,
+                      "id": 5268,
                       "name": "_mint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
@@ -37160,7 +37160,7 @@
                         "typeString": "function (address,uint256)"
                       }
                     },
-                    "id": 5260,
+                    "id": 5271,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -37175,24 +37175,24 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 5261,
+                  "id": 5272,
                   "nodeType": "ExpressionStatement",
                   "src": "577:15:29"
                 }
               ]
             },
-            "id": 5263,
+            "id": 5274,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [
               {
                 "arguments": [
                   {
-                    "id": 5247,
+                    "id": 5258,
                     "name": "_name",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 5233,
+                    "referencedDeclaration": 5244,
                     "src": "505:5:29",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_memory_ptr",
@@ -37200,11 +37200,11 @@
                     }
                   },
                   {
-                    "id": 5248,
+                    "id": 5259,
                     "name": "_symbol",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 5235,
+                    "referencedDeclaration": 5246,
                     "src": "512:7:29",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_memory_ptr",
@@ -37212,10 +37212,10 @@
                     }
                   }
                 ],
-                "id": 5249,
+                "id": 5260,
                 "kind": "baseConstructorSpecifier",
                 "modifierName": {
-                  "id": 5246,
+                  "id": 5257,
                   "name": "ERC721",
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 948,
@@ -37227,11 +37227,11 @@
               {
                 "arguments": [
                   {
-                    "id": 5251,
+                    "id": 5262,
                     "name": "host",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 5238,
+                    "referencedDeclaration": 5249,
                     "src": "533:4:29",
                     "typeDescriptions": {
                       "typeIdentifier": "t_contract$_ISuperfluid_$3574",
@@ -37239,11 +37239,11 @@
                     }
                   },
                   {
-                    "id": 5252,
+                    "id": 5263,
                     "name": "cfa",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 5241,
+                    "referencedDeclaration": 5252,
                     "src": "539:3:29",
                     "typeDescriptions": {
                       "typeIdentifier": "t_contract$_IConstantFlowAgreementV1_$2219",
@@ -37251,11 +37251,11 @@
                     }
                   },
                   {
-                    "id": 5253,
+                    "id": 5264,
                     "name": "acceptedToken",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 5244,
+                    "referencedDeclaration": 5255,
                     "src": "544:13:29",
                     "typeDescriptions": {
                       "typeIdentifier": "t_contract$_ISuperToken_$3031",
@@ -37263,11 +37263,11 @@
                     }
                   },
                   {
-                    "id": 5254,
+                    "id": 5265,
                     "name": "owner",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 5231,
+                    "referencedDeclaration": 5242,
                     "src": "559:5:29",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -37275,13 +37275,13 @@
                     }
                   }
                 ],
-                "id": 5255,
+                "id": 5266,
                 "kind": "baseConstructorSpecifier",
                 "modifierName": {
-                  "id": 5250,
+                  "id": 5261,
                   "name": "RedirectAll",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 5216,
+                  "referencedDeclaration": 5227,
                   "src": "521:11:29"
                 },
                 "nodeType": "ModifierInvocation",
@@ -37292,17 +37292,17 @@
             "nameLocation": "-1:-1:-1",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 5245,
+              "id": 5256,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 5231,
+                  "id": 5242,
                   "mutability": "mutable",
                   "name": "owner",
                   "nameLocation": "321:5:29",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5263,
+                  "scope": 5274,
                   "src": "313:13:29",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -37311,7 +37311,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 5230,
+                    "id": 5241,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "313:7:29",
@@ -37325,12 +37325,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 5233,
+                  "id": 5244,
                   "mutability": "mutable",
                   "name": "_name",
                   "nameLocation": "351:5:29",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5263,
+                  "scope": 5274,
                   "src": "337:19:29",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -37339,7 +37339,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 5232,
+                    "id": 5243,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "337:6:29",
@@ -37352,12 +37352,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 5235,
+                  "id": 5246,
                   "mutability": "mutable",
                   "name": "_symbol",
                   "nameLocation": "381:7:29",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5263,
+                  "scope": 5274,
                   "src": "367:21:29",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -37366,7 +37366,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 5234,
+                    "id": 5245,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "367:6:29",
@@ -37379,12 +37379,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 5238,
+                  "id": 5249,
                   "mutability": "mutable",
                   "name": "host",
                   "nameLocation": "411:4:29",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5263,
+                  "scope": 5274,
                   "src": "399:16:29",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -37393,10 +37393,10 @@
                     "typeString": "contract ISuperfluid"
                   },
                   "typeName": {
-                    "id": 5237,
+                    "id": 5248,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 5236,
+                      "id": 5247,
                       "name": "ISuperfluid",
                       "nodeType": "IdentifierPath",
                       "referencedDeclaration": 3574,
@@ -37413,12 +37413,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 5241,
+                  "id": 5252,
                   "mutability": "mutable",
                   "name": "cfa",
                   "nameLocation": "451:3:29",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5263,
+                  "scope": 5274,
                   "src": "426:28:29",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -37427,10 +37427,10 @@
                     "typeString": "contract IConstantFlowAgreementV1"
                   },
                   "typeName": {
-                    "id": 5240,
+                    "id": 5251,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 5239,
+                      "id": 5250,
                       "name": "IConstantFlowAgreementV1",
                       "nodeType": "IdentifierPath",
                       "referencedDeclaration": 2219,
@@ -37447,12 +37447,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 5244,
+                  "id": 5255,
                   "mutability": "mutable",
                   "name": "acceptedToken",
                   "nameLocation": "477:13:29",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5263,
+                  "scope": 5274,
                   "src": "465:25:29",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -37461,10 +37461,10 @@
                     "typeString": "contract ISuperToken"
                   },
                   "typeName": {
-                    "id": 5243,
+                    "id": 5254,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 5242,
+                      "id": 5253,
                       "name": "ISuperToken",
                       "nodeType": "IdentifierPath",
                       "referencedDeclaration": 3031,
@@ -37483,12 +37483,12 @@
               "src": "302:195:29"
             },
             "returnParameters": {
-              "id": 5256,
+              "id": 5267,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "566:0:29"
             },
-            "scope": 5279,
+            "scope": 5290,
             "src": "291:309:29",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -37499,7 +37499,7 @@
               947
             ],
             "body": {
-              "id": 5277,
+              "id": 5288,
               "nodeType": "Block",
               "src": "845:38:29",
               "statements": [
@@ -37507,11 +37507,11 @@
                   "expression": {
                     "arguments": [
                       {
-                        "id": 5274,
+                        "id": 5285,
                         "name": "to",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 5267,
+                        "referencedDeclaration": 5278,
                         "src": "872:2:29",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -37526,18 +37526,18 @@
                           "typeString": "address"
                         }
                       ],
-                      "id": 5273,
+                      "id": 5284,
                       "name": "_changeReceiver",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5042,
+                      "referencedDeclaration": 5053,
                       "src": "856:15:29",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
                         "typeString": "function (address)"
                       }
                     },
-                    "id": 5275,
+                    "id": 5286,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -37552,13 +37552,13 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 5276,
+                  "id": 5287,
                   "nodeType": "ExpressionStatement",
                   "src": "856:19:29"
                 }
               ]
             },
-            "id": 5278,
+            "id": 5289,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -37566,23 +37566,23 @@
             "nameLocation": "721:20:29",
             "nodeType": "FunctionDefinition",
             "overrides": {
-              "id": 5271,
+              "id": 5282,
               "nodeType": "OverrideSpecifier",
               "overrides": [],
               "src": "836:8:29"
             },
             "parameters": {
-              "id": 5270,
+              "id": 5281,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 5265,
+                  "id": 5276,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5278,
+                  "scope": 5289,
                   "src": "752:7:29",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -37591,7 +37591,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 5264,
+                    "id": 5275,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "752:7:29",
@@ -37605,12 +37605,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 5267,
+                  "id": 5278,
                   "mutability": "mutable",
                   "name": "to",
                   "nameLocation": "787:2:29",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5278,
+                  "scope": 5289,
                   "src": "779:10:29",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -37619,7 +37619,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 5266,
+                    "id": 5277,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "779:7:29",
@@ -37633,12 +37633,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 5269,
+                  "id": 5280,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5278,
+                  "scope": 5289,
                   "src": "800:7:29",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -37647,7 +37647,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 5268,
+                    "id": 5279,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "800:7:29",
@@ -37662,19 +37662,19 @@
               "src": "741:85:29"
             },
             "returnParameters": {
-              "id": 5272,
+              "id": 5283,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "845:0:29"
             },
-            "scope": 5279,
+            "scope": 5290,
             "src": "712:171:29",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           }
         ],
-        "scope": 5280,
+        "scope": 5291,
         "src": "234:652:29",
         "usedErrors": []
       }
@@ -37687,7 +37687,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-01-14T22:43:25.668Z",
+  "updatedAt": "2022-01-15T13:41:19.052Z",
   "devdoc": {
     "kind": "dev",
     "methods": {
