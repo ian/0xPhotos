@@ -14,6 +14,7 @@ export default function Mint() {
   const {
     walletAddress,
     deployIncomeStream,
+    approveMarket,
     uploadImage,
     uploadJSON,
     mintAssetNFT,
@@ -34,6 +35,9 @@ export default function Mint() {
     const streamAddress = streamContract.address
     setStreamAddress(streamAddress)
     const image = acceptedFiles[0]
+
+    console.debug('Approving Market to handle income stream')
+    handleApprove(streamAddress)
 
     console.debug('Uploading Image to IPFS')
 
@@ -68,6 +72,11 @@ export default function Mint() {
   const handleMint = () => {
     console.debug('Minting NFT')
     mintAssetNFT(jsonIPFS, '0.0001', streamAddress).then(console.log)
+  }
+
+  const handleApprove = (streamAddress) => {
+    console.debug('Approving Market to handle income stream')
+    approveMarket(streamAddress).then(console.log)
   }
 
   return (

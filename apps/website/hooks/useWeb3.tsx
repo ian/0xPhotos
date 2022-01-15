@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useMoralis, MoralisContextValue } from 'react-moralis'
 
 import AssetsContract from '../abi/Assets.json'
+import MarketContract from '../abi/Marketplace.json'
 import TradeableCashflowContract from '../abi/TradeableCashflow.json'
 
 // type Contract = {
@@ -22,6 +23,7 @@ type MintedNFT = {}
 
 type UseWeb3 = {
   deployIncomeStream: () => Promise<DeployedContract>
+  approveMarket: (address: string) => Promise<void>
   mintAssetNFT: (
     tokenUri: string,
     price: string,
@@ -115,6 +117,18 @@ export default function useWeb3(): UseWeb3 {
     }
   }
 
+  // allows the market to transfer ownership of the income stream
+  const approveMarket = async (streamAddress) => {
+    const address = '0x1dd14A3Ccc7D57852b7C11a9B633Be4e3aDC063F'
+    const { abi, bytecode } = TradeableCashflowContract
+    // @ts-ignore ABI has weird signature?
+    const incomeContract = new web3.eth.Contract(abi, streamAddress)
+
+    return incomeContract.methods
+      .approve(address, 1)
+      .send({ from: walletAddress })
+  }
+
   const mintAssetNFT = async (tokenUri, price, streamAddress) => {
     // const { ethAddress } = user.attributes
     const _price = web3.utils.toWei(price)
@@ -134,6 +148,7 @@ export default function useWeb3(): UseWeb3 {
     walletAddress,
     truncatedWalletAddress,
     deployIncomeStream,
+    approveMarket,
     mintAssetNFT,
     uploadImage,
     uploadJSON,
