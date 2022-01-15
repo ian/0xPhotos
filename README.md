@@ -12,7 +12,7 @@
 - [x] Moralis login
 - [x] Moralis IPFS upload
 - [x] Moralis Mint - IPFS token => Asset contract mint() call
-- [] Marketplace show Assets
+- [x] Marketplace show Assets
 - [] Purchase asset (mint license)
 
 ## UI
