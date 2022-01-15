@@ -2,7 +2,6 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Button } from 'baseui/button'
-import { Tag } from 'baseui/tag'
 
 import Layout from '../../components/Layout'
 import { FAKE_MARKETPLACE } from '../../lib/fake'
@@ -90,6 +89,7 @@ export default function Asset() {
                   <p className="mt-10 text-xs text-gray-400"></p>
                 </div>
               </div>
+              {/* @ts-ignore className works IDK why it's complaining */}
               <Button onClick={handleSubmit} className="w-full">
                 Purchase License
               </Button>
