@@ -40,7 +40,7 @@ export default function Header() {
   return (
     <Popover className="relative bg-black text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
+        <div className="flex justify-between items-center py-4 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1 font-serif text-xl">
             <Link href="/">
               <a>0xPhotos</a>
@@ -54,35 +54,32 @@ export default function Header() {
           </div>
 
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0 space-x-10">
-            <Link href="/mint">
-              <a className="flex space-x-2 items-center border-2 border-transparent hover:border-gray-500 px-3  py-1 rounded-full">
-                Upload NFT
-              </a>
-            </Link>
-
-            {!isAuthenticated && (
-              <Button kind="secondary" shape="pill" onClick={handleLogin}>
-                Connect Wallet
-              </Button>
-            )}
-
-            {isAuthenticated && (
-              <div className="border-2 border-gray-500 rounded-full pr-2.5 flex items-center space-x-2 cursor-pointer">
-                <Avatar
-                  name="Jane Doe"
-                  size="scale900"
-                  src="https://avatars.dicebear.com/api/human/yard.svg?width=285&mood=happy"
-                />
-                <span>{truncatedWalletAddress}</span>
-                <ChevronDown size="" />
-              </div>
-              // <Button
-              //   kind="secondary"
-              //   shape="pill"
-              //   onClick={() => router.push('/dashboard')}
-              // >
-              //   Dashboard
-              // </Button>
+            {isAuthenticated ? (
+              <>
+                <Link href="/mint">
+                  <a className="flex space-x-2 items-center border-2 border-transparent hover:border-gray-500 px-3  py-1 rounded-full">
+                    Upload NFT
+                  </a>
+                </Link>
+                <div className="border-2 border-gray-500 rounded-full pr-2.5 flex items-center space-x-2 cursor-pointer">
+                  <Avatar
+                    name="Jane Doe"
+                    size="scale900"
+                    src="https://avatars.dicebear.com/api/human/yard.svg?width=285&mood=happy"
+                  />
+                  <span>{truncatedWalletAddress}</span>
+                  <ChevronDown size="" />
+                </div>
+              </>
+            ) : (
+              <>
+                <a
+                  className="flex space-x-2 items-center border-2 bg-white text-black cursor-pointer hover:bg-gray-300 px-3 py-1 rounded-full"
+                  onClick={handleLogin}
+                >
+                  Connect Wallet
+                </a>
+              </>
             )}
           </div>
         </div>
