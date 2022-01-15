@@ -21,7 +21,8 @@
     "react-dropzone": "^11.5.1",
     "react-moralis": "^0.3.11",
     "styletron-engine-atomic": "^1.4.8",
-    "styletron-react": "^6.0.2"
+    "styletron-react": "^6.0.2",
+    "web3": "^1.6.1"
   },
   "devDependencies": {
     "@types/react": "^17.0.38",

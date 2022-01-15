@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useInterval } from './useInterval'
 
-const INCREMENT = 5
+const INCREMENT = 1
 
 export function useFakeProgress(): [number, () => void, () => void] {
   const [fakeProgress, setFakeProgress] = useState(0)
@@ -22,7 +22,7 @@ export function useFakeProgress(): [number, () => void, () => void] {
         setFakeProgress(fakeProgress + INCREMENT)
       }
     },
-    isActive ? 500 : null,
+    isActive ? 250 : null,
   )
   return [fakeProgress, startFakeProgress, stopFakeProgress]
 }
