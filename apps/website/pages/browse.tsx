@@ -1,12 +1,22 @@
 import Head from 'next/head'
-import { useMoralis } from 'react-moralis'
+import { useEffect, useState } from 'react'
 import Grid from '../components/Grid'
 import GridFilters from '../components/GridFilters'
 import Layout from '../components/Layout'
+import { algoliaSearch } from '../lib/algolia'
 
 import { FAKE_MARKETPLACE } from '../lib/fake'
 
-export default function Home() {
+export default function Browse() {
+  const [elements, setElements] = useState(null)
+
+  useEffect(() => {
+    // getAssetTokens().then(console.debug)
+    algoliaSearch()
+      .then((res) => res.hits)
+      .then(setElements)
+  }, [])
+
   return (
     <Layout>
       <Head>
@@ -21,7 +31,7 @@ export default function Home() {
           <GridFilters />
         </div>
         <div className="w-full">
-          <Grid elements={FAKE_MARKETPLACE} />
+          <Grid elements={elements} />
         </div>
       </div>
     </Layout>
