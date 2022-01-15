@@ -47,9 +47,9 @@ export default function useWeb3(): UseWeb3 {
       '...' +
       walletAddress.slice(walletAddress.length - 3, walletAddress.length)
 
-  useEffect(() => {
+  const requireWeb3Enabled = () => {
     if (!isWeb3Enabled) enableWeb3()
-  }, [isWeb3Enabled])
+  }
 
   const uploadImage = async (file) => {
     const moralisFile = new Moralis.File(file.name, file)
@@ -86,6 +86,8 @@ export default function useWeb3(): UseWeb3 {
   }
 
   const deployIncomeStream = async () => {
+    requireWeb3Enabled()
+
     const { abi, bytecode } = TradeableCashflowContract
 
     // @ts-ignore ABI has weird signature?
@@ -121,6 +123,8 @@ export default function useWeb3(): UseWeb3 {
 
   // allows the market to transfer ownership of the income stream
   const approveMarket = async (streamAddress) => {
+    requireWeb3Enabled()
+
     const address = '0x1dd14A3Ccc7D57852b7C11a9B633Be4e3aDC063F'
     const { abi, bytecode } = TradeableCashflowContract
     // @ts-ignore ABI has weird signature?
@@ -132,6 +136,8 @@ export default function useWeb3(): UseWeb3 {
   }
 
   const mintAssetNFT = async (tokenUri, price, streamAddress) => {
+    requireWeb3Enabled()
+
     // const { ethAddress } = user.attributes
     const _price = web3.utils.toWei(price)
     const address = '0x414b20594BDA01EA5903E16b56A82A28FCb80897'
