@@ -13,7 +13,7 @@ importers:
   apps/blockchain:
     specifiers:
       '@decentral.ee/web3-helpers': ^0.5.3
-      '@openzeppelin/contracts': ^3.4.2
+      '@openzeppelin/contracts': ^4.4.2
       '@openzeppelin/test-helpers': ^0.5.15
       '@superfluid-finance/ethereum-contracts': ^1.0.0-rc.7
       '@superfluid-finance/js-sdk': ^0.5.5
@@ -21,10 +21,13 @@ importers:
       '@truffle/hdwallet-provider': ^1.7.0
       dotenv: ^10.0.0
       ganache-time-traveler: ^1.0.16
+      pnpm: ^6.26.1
       truffle: ^5.4.21
+    dependencies:
+      pnpm: 6.26.1
     devDependencies:
       '@decentral.ee/web3-helpers': 0.5.3_e55406286851964b3a5ced9894a7e41a
-      '@openzeppelin/contracts': 3.4.2
+      '@openzeppelin/contracts': 4.4.2
       '@openzeppelin/test-helpers': 0.5.15
       '@superfluid-finance/ethereum-contracts': 1.0.0-rc.8_e55406286851964b3a5ced9894a7e41a
       '@superfluid-finance/js-sdk': 0.5.8
@@ -1202,6 +1205,10 @@ packages:
 
   /@openzeppelin/contracts/3.4.2:
     resolution: {integrity: sha512-z0zMCjyhhp4y7XKAcDAi3Vgms4T2PstwBdahiO0+9NaGICQKjynK3wduSRplTgk4LXmoO1yfDGO5RbjKYxtuxA==}
+    dev: true
+
+  /@openzeppelin/contracts/4.4.2:
+    resolution: {integrity: sha512-NyJV7sJgoGYqbtNUWgzzOGW4T6rR19FmX1IJgXGdapGPWsuMelGJn9h03nos0iqfforCbCB0iYIR0MtIuIFLLw==}
     dev: true
 
   /@openzeppelin/test-helpers/0.5.15:
@@ -10656,6 +10663,12 @@ packages:
   /pngjs/3.4.0:
     resolution: {integrity: sha512-NCrCHhWmnQklfH4MtJMRjZ2a8c80qXeMlQMv2uVp9ISJMTt562SbGd6n2oq0PaPgKm7Z6pL9E2UlLIhC+SHL3w==}
     engines: {node: '>=4.0.0'}
+    dev: false
+
+  /pnpm/6.26.1:
+    resolution: {integrity: sha512-LsBJ+mJLenS4bmbA2xLWUTpWEXIThxPQy0uePEsplBdUUFvgrTDccyIcKDepE8EY8e5QSks67IOMI7bDRySgbQ==}
+    engines: {node: '>=12.17'}
+    hasBin: true
     dev: false
 
   /polished/3.7.2:

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useMoralis, MoralisContextValue } from 'react-moralis'
 
 import AssetsContract from '../abi/Assets.json'
+import LicensesContract from '../abi/Licenses.json'
 import MarketContract from '../abi/Marketplace.json'
 import TradeableCashflowContract from '../abi/TradeableCashflow.json'
 
@@ -29,6 +30,7 @@ type UseWeb3 = {
     price: string,
     streamAddress: string,
   ) => Promise<any>
+  mintLicenseNFT: (tokenUri: string) => Promise<any>
   uploadImage: (file: File) => Promise<DeployedIPFS>
   uploadJSON: (json: object) => Promise<DeployedIPFS>
   walletAddress?: string
@@ -143,6 +145,15 @@ export default function useWeb3(): UseWeb3 {
       .send({ from: walletAddress })
   }
 
+  const mintLicenseNFT = async (tokenUri) => {
+    // const { ethAddress } = user.attributes
+    const address = '0x30647E50F220F745d3E89e7BdfcbC5cc0C09A878'
+    const { abi, bytecode } = LicensesContract
+    // @ts-ignore ABI has weird signature?
+    const mintLicense = new web3.eth.Contract(abi, address)
+    return mintLicense.methods.mint(tokenUri).send({ from: walletAddress })
+  }
+
   return {
     ...moralis,
     walletAddress,
@@ -152,5 +163,6 @@ export default function useWeb3(): UseWeb3 {
     mintAssetNFT,
     uploadImage,
     uploadJSON,
+    mintLicenseNFT,
   }
 }
