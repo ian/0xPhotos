@@ -1,4 +1,9 @@
+![Discord](https://img.shields.io/discord/930179712762933308?label=Discord)
+[![](https://img.shields.io/github/issues/ian/0xPhotos)](https://github.com/ian/0xPhotos/issues)
+
 # 0xPhotos
+
+<img src="./GithubHero.png"/>
 
 ## TODO
 
