@@ -15,7 +15,12 @@ export default function Home() {
       </Head>
 
       {/* <h1 className="mb-10">Homepage</h1> */}
-      <Grid elements={FAKE_MARKETPLACE} />
+      <div className="flex p-5">
+        <div className="w-1/5"></div>
+        <div className="w-4/5">
+          <Grid elements={FAKE_MARKETPLACE} />
+        </div>
+      </div>
     </Layout>
   )
 }

@@ -12,10 +12,6 @@ export const FAKE_MARKETPLACE = [
     url: 'https://images.unsplash.com/photo-1641384687428-344bd98ffae2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDI5fHJuU0tESHd3WVVrfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=700&q=60',
   },
   {
-    tokenId: '4',
-    url: 'https://images.unsplash.com/photo-1641384687428-344bd98ffae2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDI5fHJuU0tESHd3WVVrfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=700&q=60',
-  },
-  {
     tokenId: '5',
     url: 'https://images.unsplash.com/photo-1641574003782-a2f852650185?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDI1fHJuU0tESHd3WVVrfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=700&q=60',
   },
