@@ -75,11 +75,11 @@ export default function Header() {
 
             {isAuthenticated ? (
               <>
-                <Link href="/mint">
+                {/* <Link href="/mint">
                   <a className="flex space-x-2 items-center border-2 border-transparent hover:border-gray-500 px-3 py-1 rounded-full whitespace-nowrap">
                     Upload NFT
                   </a>
-                </Link>
+                </Link> */}
                 <div className="border-2 border-gray-500 rounded-full pr-4 flex items-center space-x-2 cursor-pointer">
                   <img
                     alt={truncatedWalletAddress}

@@ -67,7 +67,7 @@ export default function Mint() {
 
   const handleMint = () => {
     console.debug('Minting NFT')
-    mintAssetNFT(jsonIPFS, '0.0001', streamAddress)
+    mintAssetNFT(jsonIPFS, '0.0001', streamAddress).then(console.log)
   }
 
   return (

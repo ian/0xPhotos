@@ -118,7 +118,8 @@ export default function useWeb3(): UseWeb3 {
   const mintAssetNFT = async (tokenUri, price, streamAddress) => {
     // const { ethAddress } = user.attributes
     const _price = web3.utils.toWei(price)
-    const address = '0x414b20594BDA01EA5903E16b56A82A28FCb80897'
+    // const address = '0x414b20594BDA01EA5903E16b56A82A28FCb80897'
+    const address = '0x506cd4e5B94bD24b2f60D96e5ED6430c5302188c'
     const { abi, bytecode } = AssetsContract
     // @ts-ignore ABI has weird signature?
     const mintAsset = new web3.eth.Contract(abi, address)
