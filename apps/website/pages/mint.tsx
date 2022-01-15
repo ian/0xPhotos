@@ -57,11 +57,15 @@ export default function Mint() {
                       setFile(data)
                       setIPFS({ url, hash })
 
+                      // Metadata Standards https://docs.opensea.io/docs/metadata-standards
                       uploadJSONToIPFS(
                         {
-                          imageHash: hash,
-                          imageUrl: url,
+                          name: '@todo - Name',
+                          description: '@todo - Description',
+                          image: url,
+                          ipfs: hash,
                           inputStreamAddress: address,
+                          external_url: `https://0xphotos.com/ipfs/${hash}`,
                         },
                         Moralis,
                       ).then(({ url }) => {
