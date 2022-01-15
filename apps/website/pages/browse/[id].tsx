@@ -1,10 +1,12 @@
-import { Button } from 'baseui/button'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { Button } from 'baseui/button'
+import { Tag } from 'baseui/tag'
+
 import Layout from '../../components/Layout'
 import { FAKE_MARKETPLACE } from '../../lib/fake'
 import useWeb3 from '../../hooks/useWeb3'
-import Link from 'next/link'
 
 export default function Asset() {
   const router = useRouter()
@@ -41,24 +43,57 @@ export default function Asset() {
   }
 
   return (
-    <Layout>
-      <div className="grid grid-cols-3">
-        <div className="col-span-2 p-20 bg-gray-500 overflow-hidden">
+    <Layout className="max-w-5xl mx-auto pt-10">
+      <div className="grid grid-cols-2 gap-10">
+        <div className="">
           <img src={asset?.url} className="w-full shadow-2xl" />
         </div>
         <div>
-          <h2 className="p-5 text-center uppercase font-light">
-            Purchase a license
-          </h2>
+          <h1 className="text-4xl font-serif">Purchase a license</h1>
+          <p className="text-gray-400 font-light text-lg mt-2">
+            All Royalty Free Images include:
+          </p>
+          <div className="mt-10">
+            <div className="grid grid-cols-2">
+              <div>
+                <img src="/images/eyeball.svg" />
+                <h5 className="mt-3 mb-1">Full Resolution images</h5>
+                <p className="text-gray-400">4146 x 5182 px • 300DPI • TIFF</p>
+              </div>
+              <div>
+                <img src="/images/globe.svg" />
+                <h5 className="mt-3 mb-1">Unlimited & Global usage</h5>
+              </div>
+            </div>
 
-          <div className="p-5">
-            {/* <div className="border rounded shadow divide-y-2">
-              <div className="p-5 flex flex-col">Small</div>
-              <div className=" p-5 flex flex-col">Medium</div>
-              <div className=" p-5 flex flex-col">Large</div>
-            </div> */}
+            <hr className="my-10" />
 
-            <Button onClick={handleSubmit}>Mint License NFT</Button>
+            <div>
+              <h5 className="font-semibold mb-5">Choose your license</h5>
+              <div className="grid grid-cols-2 gap-10 mb-20">
+                <div className="border-2 border-black rounded-xl shadow text-center p-5">
+                  <p className="mb-2 h-8">
+                    <span className="bg-green-500 text-white rounded-full px-2 py-0.5 text-sm">
+                      Save 5%
+                    </span>
+                  </p>
+                  <h6 className="font-medium text-2xl">Stream</h6>
+                  <p className="text-gray-400">$0.002 per second </p>
+                  <p className="mt-10 text-xs text-gray-400">
+                    *equivalent to $379 per year
+                  </p>
+                </div>
+                <div className="border-2 rounded-xl shadow text-center p-5">
+                  <p className="mb-2 h-8"></p>
+                  <h6 className="font-medium text-2xl">One time</h6>
+                  <p className="text-gray-400">$399 USDC</p>
+                  <p className="mt-10 text-xs text-gray-400"></p>
+                </div>
+              </div>
+              <Button onClick={handleSubmit} className="w-full">
+                Purchase License
+              </Button>
+            </div>
 
             {/* Display tx hash */}
             {tx && (

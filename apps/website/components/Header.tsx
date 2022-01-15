@@ -1,35 +1,11 @@
-/* This example requires Tailwind CSS v2.0+ */
 import { Popover } from '@headlessui/react'
-import {
-  ChartBarIcon,
-  MenuIcon,
-  ViewGridIcon,
-  ChevronDownIcon,
-} from '@heroicons/react/outline'
+import { MenuIcon } from '@heroicons/react/outline'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 
 import useWeb3 from '../hooks/useWeb3'
 
-const solutions = [
-  {
-    name: 'Dashboard',
-    description:
-      'Get a better understanding of where your traffic is coming from.',
-    href: '#',
-    icon: ChartBarIcon,
-  },
-  {
-    name: 'Marketplace',
-    description: "Connect with third-party tools that you're already using.",
-    href: '#',
-    icon: ViewGridIcon,
-  },
-]
-
 export default function Header() {
   const { authenticate, isAuthenticated, truncatedWalletAddress } = useWeb3()
-  const router = useRouter()
 
   const handleLogin = async () => {
     authenticate({
@@ -42,7 +18,7 @@ export default function Header() {
     <Popover className="relative bg-black text-white">
       <div className="max-w-5xl mx-auto">
         <div className="flex justify-between items-center py-4 md:justify-start md:space-x-10">
-          <div className="flex justify-start lg:w-0 lg:flex-1 font-sans text-xl">
+          <div className="flex justify-start lg:w-0 lg:flex-1 font-serif text-xl">
             <Link href="/">
               <a>0xPhotos</a>
             </Link>

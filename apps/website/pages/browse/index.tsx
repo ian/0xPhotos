@@ -17,14 +17,14 @@ export default function Browse() {
   }, [])
 
   return (
-    <Layout>
+    <Layout className="max-w-5xl mx-auto pt-10">
       <Head>
         <title>Create Next App</title>
         <meta name="description" content="" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="flex p-5 gap-5">
+      <div className="flex gap-10">
         <div className="" style={{ width: 400 }}>
           <BrowseFilters />
         </div>
