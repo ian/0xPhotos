@@ -11,6 +11,7 @@ import {
 } from 'baseui/modal'
 import Layout from '../components/Layout'
 import { useState } from 'react'
+import useWindowDimensions from '../hooks/useWindowDimensions'
 
 export default function Home() {
   const [isModalOpen, setModalOpen] = useState(false)
@@ -113,6 +114,8 @@ export default function Home() {
 }
 
 const ApplyModal = ({ isOpen, onClose }) => {
+  const { height, width } = useWindowDimensions()
+
   return (
     <Modal
       onClose={onClose}
@@ -127,16 +130,31 @@ const ApplyModal = ({ isOpen, onClose }) => {
           style: ({ $theme }) => ({
             borderRadius: 0,
             // width: '80%',
+            width: width * 0.6 + 'px',
+            height: height * 0.8 + 'px',
           }),
         },
       }}
     >
-      <ModalHeader>Apply to 0xPhotos</ModalHeader>
-      <ModalBody>@anynft please write some copy for me</ModalBody>
-      <ModalFooter>
+      {/* <ModalHeader>Apply to be a Photographer</ModalHeader> */}
+      <ModalBody>
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSdVxav78TvR0bgxDzYfQNaYZsoMhAytGVWPbIcRTcHqlebpOQ/viewform?embedded=true"
+          width="100%"
+          // height="700px"
+          // width={width * 0.8 + 'px'}
+          height={height * 0.8 + 'px'}
+          frameBorder="0"
+          marginHeight={0}
+          marginWidth={0}
+        >
+          Loading…
+        </iframe>
+      </ModalBody>
+      {/* <ModalFooter>
         <ModalButton kind="tertiary">Cancel</ModalButton>
         <ModalButton>Okay</ModalButton>
-      </ModalFooter>
+      </ModalFooter> */}
     </Modal>
   )
 }
