@@ -4,7 +4,11 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        seagreen: '#ACC9D1',
+      },
+    },
     fontFamily: {
       sans: ['ui-sans-serif', 'system-ui'],
       serif: ['Noto Serif', 'ui-serif'],
