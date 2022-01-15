@@ -1,5 +1,8 @@
 // import TRADEABLECASHFLOW_ARTIFACT from 'blockchain/build/contracts/TradeableCashFlow.json'
+import ASSET_ABI from '../abi/Assets.json'
 import TRADEABLECASHFLOW_ARTIFACT from '../abi/TradeableCashflow.json'
+
+console.log({ ASSET_ABI })
 
 export async function deploy(user, web3) {
   const { ethAddress } = user.attributes
@@ -83,4 +86,16 @@ export async function deploy(user, web3) {
     address: incomeStreamAddress,
     // hash: transactionHash,
   }
+}
+
+export function mint(user, web3, tokenUri, streamAddress) {
+  const { ethAddress } = user.attributes
+  const _price = web3.utils.toWei('0.0001')
+  const ASSET_CONTRACT = '0x414b20594BDA01EA5903E16b56A82A28FCb80897'
+  const { abi, bytecode } = ASSET_ABI
+  const mintAsset = new web3.eth.Contract(abi, ASSET_CONTRACT)
+
+  return mintAsset.methods
+    .mint(tokenUri, _price, streamAddress)
+    .send({ from: ethAddress })
 }

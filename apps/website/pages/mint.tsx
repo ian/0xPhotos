@@ -4,7 +4,7 @@ import { FileUploader } from 'baseui/file-uploader'
 import { Button } from 'baseui/button'
 
 import { useFakeProgress } from '../hooks/useFakeProgress'
-import { deploy } from '../lib/incomeStream'
+import { deploy, mint } from '../lib/incomeStream'
 
 import Layout from '../components/Layout'
 import AssetForm from '../components/AssetForm'
@@ -44,20 +44,31 @@ export default function Mint() {
                 startFakeProgress()
 
                 const data = acceptedFiles[0]
+
+                console.debug('Deploying Income Stream Contract')
+
                 deploy(user, web3).then(({ address }) => {
+                  console.debug('Uploading Image to IPFS')
+
                   uploadImageToIPFS(data, Moralis)
-                    .then(({ ipfs, hash }) => {
+                    .then(({ url, hash }) => {
+                      console.debug('Uploading JSON to IPFS')
+
                       setFile(data)
-                      setIPFS({ ipfs, hash })
+                      setIPFS({ url, hash })
 
                       uploadJSONToIPFS(
                         {
                           imageHash: hash,
-                          imageUrl: ipfs,
+                          imageUrl: url,
                           inputStreamAddress: address,
                         },
                         Moralis,
-                      ).then(console.log)
+                      ).then(({ url }) => {
+                        console.debug('Minting NFT')
+
+                        mint(user, web3, url, address).then(console.log)
+                      })
                     })
                     .catch(console.error)
                     .finally(() => stopFakeProgress())
@@ -86,16 +97,26 @@ const FilePreview = ({ file, onClear }) => (
 
 async function uploadImageToIPFS(file, Moralis) {
   return new Moralis.File(file.name, file).saveIPFS().then((res) => {
-    const ipfs = res.ipfs()
+    const url = res.ipfs()
     const hash = res.hash()
 
     // File has been uploaded, here's hash and url
-    return { ipfs, hash }
+    return { url, hash }
   })
 }
 
 async function uploadJSONToIPFS(json, Moralis) {
   return new Moralis.File('file.json', {
     base64: btoa(JSON.stringify(json)),
-  }).saveIPFS()
+  })
+    .saveIPFS()
+    .then((res) => {
+      const url = res.ipfs()
+      const hash = res.hash()
+
+      return {
+        url,
+        hash,
+      }
+    })
 }
