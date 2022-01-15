@@ -40,9 +40,9 @@ export default function Header() {
 
   return (
     <Popover className="relative bg-black text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="max-w-5xl mx-auto">
         <div className="flex justify-between items-center py-4 md:justify-start md:space-x-10">
-          <div className="flex justify-start lg:w-0 lg:flex-1 font-serif text-xl">
+          <div className="flex justify-start lg:w-0 lg:flex-1 font-sans text-xl">
             <Link href="/">
               <a>0xPhotos</a>
             </Link>
