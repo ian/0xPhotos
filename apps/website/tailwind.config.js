@@ -11,7 +11,8 @@ module.exports = {
     },
     fontFamily: {
       sans: ['Poppins', 'system-ui'],
-      serif: ['Playfair Display', 'ui-serif'],
+      // serif: ['Playfair Display', 'ui-serif'],
+      serif: ['Miller', 'ui-serif'],
       mono: ['ui-monospace', 'SFMono-Regular'],
     },
   },

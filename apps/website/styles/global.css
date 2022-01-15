@@ -21,3 +21,11 @@ body {
     }
   }
 }
+
+@font-face {
+  font-family: 'Miller';
+  src: url('../public/fonts/Miller/1fdf9a4d690c4e7271e535c39f40045f.woff')
+    format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
