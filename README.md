@@ -30,11 +30,16 @@ Asset NFTs become future cash flow positive assets that can be traded on NFT mar
 Architecture:
 
 - NFT 721 asset contract
-- React-based NFT marketplace \* Maybe a CDN to deliver images?
+- NFT 721 license contract
+- Superfluid Tradeable Cashflow contract
+- React-based NFT website + marketplace
 
 Technologies
 
-- Moralis for web3 API
-- Superfluid for streaming UDSC
-- IPFS for storage media
-- Covalent for NFT indexing \* Next.js for frontend
+- Polygon: All contracts and NFTs (minting + marketplace) are on Polygon instead of L1.
+- IPFS: We store all assets and licenses on IPFS.
+- Moralis: Moralis is our API for interacting with the blockchain.
+- Superfluid: Anyone who licenses content opens a SuperFluid stream paying the NFT's owner.
+- Covalent: NFT indexing and metadata.
+- Next.js for frontend
+- Truffle and Remix for Solidity development
