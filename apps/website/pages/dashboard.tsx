@@ -46,14 +46,15 @@ export default function Dashboard() {
           <h2 className="mb-5">
             Total Spent in <span className="text-green-500">USDC</span>
           </h2>
-          <p className="text-5xl font-light">${netFlow}</p>
+          {/* <p className="text-5xl font-light">${netFlow}</p> */}
+          <p className="text-5xl font-light">$4,380.22</p>
         </div>
-        {/* <div>
+        <div>
           <h2 className="mb-5">
             This month’s spend in <span className="text-green-500">USDC</span>
           </h2>
-          <p className="text-5xl font-light">$4,484.33</p>
-        </div> */}
+          <p className="text-5xl font-light">$284.33</p>
+        </div>
       </div>
 
       <div className="mt-20">
