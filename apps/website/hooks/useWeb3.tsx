@@ -3,6 +3,7 @@ import { useMoralis, MoralisContextValue, MoralisProvider } from 'react-moralis'
 import SuperfluidSDK from '@superfluid-finance/js-sdk'
 
 import Web3 from 'web3'
+import BigNumber from 'bignumber.js'
 
 import AssetsContract from '../abi/Assets.json'
 import LicensesContract from '../abi/Licenses.json'
@@ -25,6 +26,17 @@ function calculateFlowRate(amount) {
   let fr = amount / (86400 * 30)
   return Math.floor(fr)
 }
+
+function calculateStream(flowRate) {
+  const stream = new BigNumber(flowRate * (86400 * 30)).shiftedBy(-18)
+  return stream.toFixed(2)
+}
+
+function calculateStreamPerSecond(amount) {
+  let streamSecond = amount / (86400 * 30)
+  return streamSecond
+}
+
 const MINIMUM_GAME_FLOW_RATE = '3858024691358'
 
 type DeployedContract = {
@@ -44,6 +56,9 @@ type UseWeb3 = {
   createOutputStream: (to: string, amount: any) => Promise<any>
   approveMarket: (address: string) => Promise<void>
   getNetFlow: () => Promise<string>
+  calculateStreamPerSecond: (amount: string) => Promise<any>
+  getfUSDCxBalance: () => Promise<any>
+  listInFlows: () => Promise<any>
   mintAssetNFT: (
     tokenUri: string,
     price: string,
@@ -137,6 +152,33 @@ export default function useProvider(): UseWeb3 {
           hash,
         }
       })
+  }
+
+  const listInFlows = async () => {
+    const sdk = await initSuperfluid()
+
+    const inflowsArray = []
+    const flows = await sdk.cfa.listFlows({
+      superToken: fUSDCx,
+      // account: '0x2A92d10eb3BE7332ef92a2D5E3ec94d567683ec3', // asset inflow contract
+      account: walletAddress,
+    })
+
+    //total inflows
+    for (let i = 0; i < flows.inFlows.length; i++) {
+      inflowsArray.push(flows.inFlows[i])
+    }
+
+    let totaInflows = 0
+    let inFlows = inflowsArray
+    for (let i = 0; i <= inFlows.length; i++) {
+      if (inFlows[i] !== undefined) {
+        let stream = calculateStream(inFlows[i].flowRate)
+        totaInflows = totaInflows + Number(stream)
+      }
+    }
+    console.log(inFlows)
+    return totaInflows
   }
 
   const deployIncomeStream = async () => {
@@ -251,6 +293,21 @@ export default function useProvider(): UseWeb3 {
     //   .then(console.log)
   }
 
+  const getfUSDCxBalance = async () => {
+    const contractx = new web3.eth.Contract(USDCContract.abi, fUSDCx)
+
+    console.log(contractx)
+    const assetIncomeAddress = '0x2A92d10eb3BE7332ef92a2D5E3ec94d567683ec3'
+
+    const fUSDCxBalance = await contractx.methods
+      .balanceOf(walletAddress)
+      .call()
+    const adjustedfUSDCx = Number(
+      new BigNumber(fUSDCxBalance).shiftedBy(-18),
+    ).toFixed(10)
+    return adjustedfUSDCx
+  }
+
   const upgradeSupertoken = async (amount: string) => {
     // await requireWeb3Enabled()
     const _amount = web3.utils.toWei(amount)
@@ -341,6 +398,9 @@ export default function useProvider(): UseWeb3 {
     upgradeSupertoken,
     getNetFlow,
     mintLicenseNFT,
+    getfUSDCxBalance,
+    listInFlows,
+    calculateStreamPerSecond,
   }
 }
 

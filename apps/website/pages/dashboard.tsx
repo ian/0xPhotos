@@ -13,10 +13,15 @@ export default function Dashboard() {
     isWeb3Enabled,
     web3,
     Moralis,
+    getfUSDCxBalance,
+    listInFlows,
+    // calculateStreamPerSecond,
   } = useWeb3()
 
   const [netFlow, setNetFlow] = useState(null)
   const [tokens, setTokens] = useState(null)
+  const [fUSDCxBalance, setfUSDCxBalance] = useState(null)
+  const [totalMonthlyInflow, setTotalMonthlyInflow] = useState(null)
 
   useEffect(() => {
     if (isWeb3Enabled) {
@@ -33,14 +38,77 @@ export default function Dashboard() {
     }
   }, [isWeb3Enabled])
 
+  // useEffect(() => {
+  //   console.log({ walletAddress })
+  //   USDCxBalance()
+  // }, [walletAddress])
+
   useEffect(() => {
-    console.log({ walletAddress })
-  }, [walletAddress])
+    const timeout = setInterval(async () => {
+      // const _fUSDCxBalance = fUSDCxBalance || 0
+      const balance = await getfUSDCxBalance()
+      setfUSDCxBalance(balance)
+
+      const montlyFlowRate = await listInFlows()
+      setTotalMonthlyInflow(montlyFlowRate)
+    }, 1000)
+    return () => clearTimeout(timeout)
+  }, [])
+
+  // useEffect(() => {
+  //   const load = async () => {
+  //     const balance = await getfUSDCxBalance()
+  //     setfUSDCxBalance(balance)
+
+  //     const montlyFlowRate = await listInFlows()
+  //     setTotalMonthlyInflow(montlyFlowRate)
+  //     console.log('montlyFlowRate', montlyFlowRate)
+
+  //     const streamSecond = calculateStreamPerSecond(totalMonthlyInflow)
+  //     const stream = setTimeout(() => {
+  //       // setfUSDCxBalance(Number(fUSDCxBalance) + Number(streamSecond))
+  //       setfUSDCxBalance(Number(fUSDCxBalance) + 1)
+  //     }, 1000)
+  //     // return () => {
+  //     //   clearTimeout(stream)
+  //     // }
+  //   }
+  //   load()
+  // }, [fUSDCxBalance])
+
+  // @ts-ignore
+  // const USDCxBalance = async () => {
+  //   const balance = await getfUSDCxBalance()
+  //   // setfUSDCxBalance(balance)
+  //   console.log('balance:' + balance)
+  //   console.log(await listInFlows())
+  //   setTotalMonthlyInflow(await listInFlows())
+  //   console.log(calculateStreamPerSecond(totalMonthlyInflow) / 10)
+
+  //   setInterval(() => {
+  //     // const stream = Number(
+  //     //   (calculateStreamPerSecond(totalMonthlyInflow) / 10).toFixed(8),
+  //     // )
+  //     const newBalance = fUSDCxBalance + 1
+  //     setfUSDCxBalance(newBalance)
+  //   }, 1000)
+  // }
+
+  const calculateStreamPerSecond = (amount) => {
+    console.log('flow per second' + amount)
+    let streamSecond = amount / (86400 * 30)
+    console.log('flow per second' + streamSecond)
+    // console.log(Number(fUSDCxBalance) + Number(streamSecond))
+
+    return streamSecond
+  }
 
   return (
     <Layout className="max-w-5xl mx-auto">
       <h1 className="my-5 font-serif text-4xl">My dashboard</h1>
 
+      <div>Balance: {fUSDCxBalance}</div>
+      <div>Total Monthly Inflows: {totalMonthlyInflow}</div>
       <div className="grid grid-cols-2 mt-10">
         <div>
           <h2 className="mb-5">
