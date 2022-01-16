@@ -53,13 +53,13 @@ export default function Header() {
 
                 <Link href="/dashboard">
                   <a className="flex space-x-2 items-center border-2 cursor-pointer hover:bg-gray-800 px-3 py-1 rounded-full whitespace-nowrap">
-                    <img
+                    {/* <img
                       alt={truncatedWalletAddress}
                       src="https://avatars.dicebear.com/api/human/yard.svg?width=285&mood=happy"
                       className="w-10 h-10 rounded-full"
-                    />
+                    /> */}
 
-                    <span className="w-28 ">{truncatedWalletAddress}</span>
+                    <span className="">{truncatedWalletAddress}</span>
                   </a>
                 </Link>
               </>
