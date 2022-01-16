@@ -11,7 +11,7 @@ export default function Header() {
     authenticate({
       // provider: 'walletconnect',
       chainId: parseInt(process.env.NEXT_PUBLIC_ETH_CHAIN_ID),
-    }).then((res) => console.log({ res }))
+    })
   }
 
   return (
@@ -52,10 +52,7 @@ export default function Header() {
                 </Link>
 
                 <Link href="/dashboard">
-                  <a
-                    className="flex space-x-2 items-center border-2 cursor-pointer hover:bg-gray-800 px-3 py-1 rounded-full whitespace-nowrap"
-                    onClick={handleLogin}
-                  >
+                  <a className="flex space-x-2 items-center border-2 cursor-pointer hover:bg-gray-800 px-3 py-1 rounded-full whitespace-nowrap">
                     <img
                       alt={truncatedWalletAddress}
                       src="https://avatars.dicebear.com/api/human/yard.svg?width=285&mood=happy"

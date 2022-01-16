@@ -74,6 +74,8 @@ export default function useProvider(): UseWeb3 {
   const moralis = useMoralis()
   const { user, web3, Moralis, isWeb3Enabled, enableWeb3 } = moralis
 
+  console.log({ moralis })
+
   const walletAddress = user?.attributes?.ethAddress
   const truncatedWalletAddress =
     walletAddress &&
