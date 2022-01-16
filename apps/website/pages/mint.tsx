@@ -20,16 +20,12 @@ export default function Mint() {
     uploadJSON,
     mintAssetNFT,
   } = useWeb3()
-  const [progressAmount, startFakeProgress, stopFakeProgress] =
-    useFakeProgress()
 
   const [file, setFile] = useState(null)
   const [mintStep, setMintStep] = useState(null)
-  const [jsonIPFS, setJsonIPFS] = useState(null)
   // const [streamAddress, setStreamAddress] = useState(null)
 
   const handleDrop = async (acceptedFiles, rejectedFiles) => {
-    // startFakeProgress()
     const image = acceptedFiles[0]
     setFile(image)
   }
@@ -39,16 +35,12 @@ export default function Mint() {
     setMintStep('ipfs')
 
     const { url, hash } = await uploadImage(file)
-    // .finally(() =>
-    //   stopFakeProgress(),
-    // )
 
     console.debug('Deploying Income Stream Contract')
     setMintStep('stream')
 
     const streamContract = await deployIncomeStream()
     const streamAddress = streamContract.address
-    // setStreamAddress(streamAddress)
 
     console.debug('Approving Market to handle income stream')
     await approveMarket(streamAddress).then(console.log)
@@ -72,7 +64,6 @@ export default function Mint() {
       fee_recipient: walletAddress, // Where seller fees will be paid to.
     })
 
-    // setJsonIPFS(jsonIPFS)
     console.debug('Minting NFT')
     setMintStep('mint')
 
@@ -88,11 +79,7 @@ export default function Mint() {
           {file ? (
             <FilePreview file={file} onClear={() => setFile(null)} />
           ) : (
-            <FileUploader
-              accept="image/*"
-              onCancel={stopFakeProgress}
-              onDrop={handleDrop}
-            />
+            <FileUploader accept="image/*" onDrop={handleDrop} />
           )}
         </div>
 
