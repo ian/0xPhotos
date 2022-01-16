@@ -168,37 +168,6 @@ export default function useProvider(): UseWeb3 {
     }
   }
 
-  // const signer = sf.createSigner({
-  //   privateKey:
-  //     '0430a178577395d2da1dade90c062d2ac50e2b05a5d5319e5064e52ddb615996',
-  //   provider: customHttpProvider,
-  // })
-
-  // const createOutputStream = async (to: string, amount) => {
-  //   const sf = await initSuperfluid()
-  //   try {
-  //     const createFlowOperation = sf.cfaV1.createFlow({
-  //       sender: '0x16DA78c2b320374458eD9720D0c333C2A9F2aDFA',
-  //       receiver: '0x2A92d10eb3BE7332ef92a2D5E3ec94d567683ec3',
-  //       flowRate: calculateFlowRate(amount).toString(),
-  //       superToken: fUSDCx,
-  //       // userData?: string
-  //     })
-
-  //     console.log('Creating your stream...')
-
-  //     const result = await createFlowOperation.exec(signer)
-  //     console.log(result)
-
-  //     console.log('Congrats - you just created a money stream!')
-  //   } catch (error) {
-  //     console.log(
-  //       "Hmmm, your transaction threw an error. Make sure that this stream does not already exist, and that you've entered a valid Ethereum address!",
-  //     )
-  //     console.error(error)
-  //   }
-  // }
-
   const createOutputStream = async (to: string, amount) => {
     const sdk = await initSuperfluid()
 
