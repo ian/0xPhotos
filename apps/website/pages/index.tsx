@@ -1,16 +1,10 @@
 import { Button } from 'baseui/button'
-import Head from 'next/head'
+import Link from 'next/link'
 import Layout from '../components/Layout'
 
 export default function Home() {
   return (
     <Layout>
-      <Head>
-        <title>Create Next App</title>
-        <meta name="description" content="" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       {/* <h1 className="mb-10 p-40 text-center text-2xl font-bold">Homepage</h1> */}
       <div
         className="bg-cover"
@@ -29,8 +23,16 @@ export default function Home() {
               </p>
 
               <div className="mt-10 flex space-x-5">
-                <Button>Browse the collection</Button>
-                <Button kind="secondary">Become a contributor</Button>
+                <Link href="/browse">
+                  <a className="bg-black text-white p-4">
+                    Browse the collection
+                  </a>
+                </Link>
+                <Link href="/contributors">
+                  <a className="bg-white text-black p-4">
+                    Become a contributor
+                  </a>
+                </Link>
               </div>
             </div>
           </div>
