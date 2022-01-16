@@ -7,7 +7,7 @@ export default function AssetCard(props) {
   //   </div>
   // )
 
-  console.log({ asset })
+  // console.log({ asset })
 
   return (
     <div
