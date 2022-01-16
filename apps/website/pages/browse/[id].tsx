@@ -34,8 +34,11 @@ export default function Asset() {
     // setJsonIPFS(jsonIPFS)
     // console.log('JSON IPFS: ', jsonIPFS)
     // handleMint(jsonIPFS).finally(() => setSubmitting(false))
+
     setSubmitting(true)
-    await upgradeSupertoken('0.1').then(() => setSubmitting(false))
+    await upgradeSupertoken('10').then(() => setSubmitting(false))
+
+    setSubmitting(true)
     createOutputStream('', 500)
       .then(console.debug)
       .finally(() => setSubmitting(false))

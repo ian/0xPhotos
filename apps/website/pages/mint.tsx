@@ -54,8 +54,12 @@ export default function Mint() {
       streamAddress,
 
       // Metadata Standards https://docs.opensea.io/docs/metadata-standards
-      name: '@todo - Name',
-      description: '@todo - Description',
+      // name: '@todo - Name',
+      // description: '@todo - Description',
+
+      // values will be name, description, photoCredit, license,
+      ...values,
+
       image: url,
       external_url: `https://0xphotos.com/ipfs/${hash}`,
 
