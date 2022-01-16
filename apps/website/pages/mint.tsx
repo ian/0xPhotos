@@ -24,7 +24,7 @@ export default function Mint() {
     useFakeProgress()
 
   const [file, setFile] = useState(null)
-  const [mintStep, setMintStep] = useState('done')
+  const [mintStep, setMintStep] = useState(null)
   const [jsonIPFS, setJsonIPFS] = useState(null)
   // const [streamAddress, setStreamAddress] = useState(null)
 
