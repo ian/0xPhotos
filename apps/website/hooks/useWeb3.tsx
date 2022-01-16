@@ -1,10 +1,15 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { useMoralis, MoralisContextValue, MoralisProvider } from 'react-moralis'
-import { Framework } from '@superfluid-finance/sdk-core'
+// import { Framework } from '@superfluid-finance/sdk-core'
+import SuperfluidSDK from '@superfluid-finance/js-sdk'
+
+import Web3 from 'web3'
+import BigNumber from 'bignumber.js'
 
 import AssetsContract from '../abi/Assets.json'
 import LicensesContract from '../abi/Licenses.json'
 import SuperFluidUpgrade from '../abi/SuperFluidUpgrade.json'
+import ConstantFlowAgreement from '../abi/ConstantFlowAgreement.json'
 import TradeableCashflowContract from '../abi/TradeableCashflow.json'
 
 import USDCContract from '../abi/USDC.json'
@@ -31,6 +36,7 @@ type MintedNFT = {}
 
 type UseWeb3 = {
   deployIncomeStream: () => Promise<DeployedContract>
+  createOutputStream: (to: string, amount: any) => Promise<any>
   approveMarket: (address: string) => Promise<void>
   mintAssetNFT: (
     tokenUri: string,
@@ -85,10 +91,21 @@ export default function useProvider(): UseWeb3 {
   }, [isWeb3Enabled])
 
   const initSuperfluid = async () => {
-    const web3jsSf = await Framework.create({
-      networkName: 'matic',
-      provider: web3.currentProvider,
+    // const core = await Framework.create({
+    //   networkName: 'maticmum',
+    //   provider: web3.currentProvider,
+    // })
+
+    const sdk = new SuperfluidSDK.Framework({
+      web3: new Web3(web3.currentProvider),
     })
+
+    await sdk.initialize()
+    return sdk
+    // return {
+    //   sdk,
+    //   // core,
+    // }
   }
 
   const uploadImage = async (file) => {
@@ -142,7 +159,7 @@ export default function useProvider(): UseWeb3 {
           'TCF', // symbol - could be dymanic
           '0xEB796bdb90fFA0f28255275e16936D25d3418603', //host
           '0x49e565Ed1bdc17F3d220f72DF0857C26FA83F873', // constantflow agreement
-          '0x96B82B65ACF7072eFEb00502F45757F254c2a0D4', // accepted token (MATICx)]
+          '0x42bb40bF79730451B11f6De1CbA222F17b87Afd7', // accepted token (USDCx)]
         ],
       })
       .send({
@@ -159,6 +176,120 @@ export default function useProvider(): UseWeb3 {
       address: contractAddress,
       // hash: transactionHash,
     }
+  }
+
+  // const signer = sf.createSigner({
+  //   privateKey:
+  //     '0430a178577395d2da1dade90c062d2ac50e2b05a5d5319e5064e52ddb615996',
+  //   provider: customHttpProvider,
+  // })
+
+  // const createOutputStream = async (to: string, amount) => {
+  //   const sf = await initSuperfluid()
+  //   try {
+  //     const createFlowOperation = sf.cfaV1.createFlow({
+  //       sender: '0x16DA78c2b320374458eD9720D0c333C2A9F2aDFA',
+  //       receiver: '0x2A92d10eb3BE7332ef92a2D5E3ec94d567683ec3',
+  //       flowRate: calculateFlowRate(amount).toString(),
+  //       superToken: fUSDCx,
+  //       // userData?: string
+  //     })
+
+  //     console.log('Creating your stream...')
+
+  //     const result = await createFlowOperation.exec(signer)
+  //     console.log(result)
+
+  //     console.log('Congrats - you just created a money stream!')
+  //   } catch (error) {
+  //     console.log(
+  //       "Hmmm, your transaction threw an error. Make sure that this stream does not already exist, and that you've entered a valid Ethereum address!",
+  //     )
+  //     console.error(error)
+  //   }
+  // }
+
+  function calculateFlowRate(amount) {
+    let fr = amount / (86400 * 30)
+    console.log({ fr })
+    return Math.floor(fr)
+  }
+  const MINIMUM_GAME_FLOW_RATE = '3858024691358'
+
+  const createOutputStream = async (to: string, amount) => {
+    const sdk = await initSuperfluid()
+
+    const flowRate = calculateFlowRate(amount)
+    const receiver = '0x2A92d10eb3BE7332ef92a2D5E3ec94d567683ec3'
+
+    console.log({ receiver, flowRate })
+
+    return sdk.cfa.createFlow({
+      // flowRate: flowRate.toString(),
+      flowRate: MINIMUM_GAME_FLOW_RATE,
+      receiver,
+      sender: walletAddress,
+      superToken: fUSDCx,
+      // userData: this.state.web3.eth.abi.encodeParameter("uint256", tokenURI),
+    })
+
+    // const { abi: cfaABI } = ConstantFlowAgreement
+    // const cfaAddress = '0x49e565Ed1bdc17F3d220f72DF0857C26FA83F873'
+    // // @ts-ignore
+    // const cfaContract = new web3.eth.Contract(cfaABI, cfaAddress)
+
+    // return cfaContract.methods
+    //   .createFlow(fUSDCx, receiver, flowRate.toString(), '0x')
+    //   .send({ from: walletAddress })
+
+    // Write operations
+    // sf.cfaV1.createFlow({
+    //   sender: walletAddress,
+    //   receiver: address,
+    //   superToken: fUSDCx,
+    //   flowRate: calculateFlowRate(amount),
+    //   // userData: string,
+    // })
+
+    // const shiftedAmount = new BigNumber(amount).shiftedBy(18)
+    // const address = Web3.utils.toChecksumAddress(
+    //   '0x2A92d10eb3BE7332ef92a2D5E3ec94d567683ec3',
+    //   // to
+    // )
+    // const _flowRate = calculateFlowRate(shiftedAmount)
+
+    // const { abi: cfaABI } = ConstantFlowAgreement
+    // const cfaAddress = '0x49e565Ed1bdc17F3d220f72DF0857C26FA83F873'
+    // // @ts-ignore
+
+    // // const cfaContract = new web3.eth.Contract(cfaABI, cfaAddress)
+
+    // const tx = cfaContract.methods
+    //   .createFlow(fUSDCx, address, _flowRate.toString(), '0x')
+    //   .encodeABI()
+
+    // const sf = this.state.sf
+
+    // const tx = sf.cfa._cfa.methods
+    //   .createFlow(
+    //     fUSDCx.toString(),
+    //     address.toString(),
+    //     _flowRate.toString(),
+    //     '0x',
+    //   )
+    //   .encodeABI()
+
+    // await Framework.host.hostContract.methods()
+
+    // await core.host.hostContract
+    //   .callAgreement(
+    //     // sf.cfa._cfa._address
+    //     cfaAddress,
+    //     tx,
+    //     '0x',
+    //   )
+    //   .send({ from: walletAddress, type: '0x2' })
+    //   .then(console.log)
   }
 
   const upgradeSupertoken = async (amount: string) => {
@@ -179,6 +310,7 @@ export default function useProvider(): UseWeb3 {
 
     // @ts-ignore ABI has weird signature?
     const contract = new web3.eth.Contract(USDCContract.abi, fUSDC)
+    // @ts-ignore
     const contractx = new web3.eth.Contract(USDCxContract.abi, fUSDCx)
 
     console.log({ user, web3, Moralis })
@@ -241,7 +373,30 @@ export default function useProvider(): UseWeb3 {
     mintAssetNFT,
     uploadImage,
     uploadJSON,
+    createOutputStream,
     upgradeSupertoken,
     mintLicenseNFT,
   }
 }
+
+// export function calculateFlowRate(amount) {
+//   let fr = amount / (86400 * 30)
+//   console.log({ fr })
+//   return Math.floor(fr)
+// }
+
+// function calculateFlowRate(amount) {
+//   if (typeof Number(amount) !== "number" || isNaN(Number(amount)) === true) {
+//     alert("You can only calculate a flowRate based on a number");
+//     return;
+//   } else if (typeof Number(amount) === "number") {
+//     if (Number(amount) === 0) {
+//       return 0;
+//     }
+
+//     const amountInWei = web3.utils.toWei(amount)
+//     const monthlyAmount = ethers.utils.formatEther(amountInWei.toString());
+//     const calculatedFlowRate = monthlyAmount * 3600 * 24 * 30;
+//     return calculatedFlowRate;
+//   }
+// }
