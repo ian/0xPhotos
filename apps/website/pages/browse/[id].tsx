@@ -35,8 +35,9 @@ export default function Asset() {
     // console.log('JSON IPFS: ', jsonIPFS)
     // handleMint(jsonIPFS).finally(() => setSubmitting(false))
 
-    setSubmitting(true)
-    await upgradeSupertoken('10').then(() => setSubmitting(false))
+    // TODO do we need this every time or just when you dont have enough USDCx
+    // setSubmitting(true)
+    // await upgradeSupertoken('10').then(() => setSubmitting(false))
 
     setSubmitting(true)
     createOutputStream('', 500)

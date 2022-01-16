@@ -56,7 +56,7 @@ type UseWeb3 = {
   createOutputStream: (to: string, amount: any) => Promise<any>
   approveMarket: (address: string) => Promise<void>
   getNetFlow: () => Promise<string>
-  calculateStreamPerSecond: (amount: string) => Promise<any>
+  calculateStreamPerSecond: (amount: string) => number
   getfUSDCxBalance: () => Promise<any>
   listInFlows: () => Promise<any>
   mintAssetNFT: (
@@ -294,6 +294,7 @@ export default function useProvider(): UseWeb3 {
   }
 
   const getfUSDCxBalance = async () => {
+    // @ts-ignore
     const contractx = new web3.eth.Contract(USDCContract.abi, fUSDCx)
 
     console.log(contractx)

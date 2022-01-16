@@ -48,6 +48,7 @@ importers:
       algoliasearch: ^4.12.0
       autoprefixer: ^10.4.2
       baseui: ^10.7.2
+      bignumber.js: ^9.0.2
       blockchain: ^1.0.6
       eslint: 8.6.0
       eslint-config-next: 12.0.8
@@ -76,6 +77,7 @@ importers:
       '@walletconnect/web3-provider': 1.7.1
       algoliasearch: 4.12.0
       baseui: 10.7.2_18b9fae9192809454029c5aad07d3a92
+      bignumber.js: 9.0.2
       blockchain: 1.0.6
       formik: 2.2.9_react@17.0.2
       headlessui: link:headlessui
