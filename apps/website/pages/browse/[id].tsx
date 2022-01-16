@@ -97,9 +97,10 @@ export default function Asset() {
                   <p className="mt-10 text-xs text-gray-400"></p>
                 </div>
               </div>
-              {/* @ts-ignore className works IDK why it's complaining */}
+
               <Button
                 onClick={handleSubmit}
+                // @ts-ignore className works IDK why it's complaining
                 className="w-full"
                 isLoading={isSubmitting}
               >

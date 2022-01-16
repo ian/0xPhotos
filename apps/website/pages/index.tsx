@@ -19,13 +19,13 @@ export default function Home() {
         <div className="max-w-3xl mx-auto h-full flex items-center">
           <div className="text-white">
             <h1 className="text-6xl font-serif mb-10">
-              The world's best moments, captured for you.
+              The world&apos;s best moments, captured for you.
             </h1>
             <div className="w-3/5">
               <p>
-                Buying stock images from us, you’re supporting photographers by
-                ensuring they receive the majority of royalties so they can
-                continue to bring you their best work.{' '}
+                Buying stock images from us, you&apos;re supporting
+                photographers by ensuring they receive the majority of royalties
+                so they can continue to bring you their best work.
               </p>
 
               <div className="mt-10 flex space-x-5">

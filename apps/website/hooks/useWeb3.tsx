@@ -1,30 +1,21 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { useMoralis, MoralisContextValue, MoralisProvider } from 'react-moralis'
-// import { Framework } from '@superfluid-finance/sdk-core'
 import SuperfluidSDK from '@superfluid-finance/js-sdk'
 
 import Web3 from 'web3'
-import BigNumber from 'bignumber.js'
 
 import AssetsContract from '../abi/Assets.json'
 import LicensesContract from '../abi/Licenses.json'
-import SuperFluidUpgrade from '../abi/SuperFluidUpgrade.json'
-import ConstantFlowAgreement from '../abi/ConstantFlowAgreement.json'
 import TradeableCashflowContract from '../abi/TradeableCashflow.json'
 
 import USDCContract from '../abi/USDC.json'
 import USDCxContract from '../abi/USDCx.json'
-
-// type Contract = {
-//   abi:
-// }
 
 const fUSDC = '0xbe49ac1EadAc65dccf204D4Df81d650B50122aB2'
 const fUSDCx = '0x42bb40bF79730451B11f6De1CbA222F17b87Afd7'
 
 function calculateFlowRate(amount) {
   let fr = amount / (86400 * 30)
-  // console.log({ fr })
   return Math.floor(fr)
 }
 const MINIMUM_GAME_FLOW_RATE = '3858024691358'
@@ -99,21 +90,12 @@ export default function useProvider(): UseWeb3 {
   }, [isWeb3Enabled])
 
   const initSuperfluid = async () => {
-    // const core = await Framework.create({
-    //   networkName: 'maticmum',
-    //   provider: web3.currentProvider,
-    // })
-
     const sdk = new SuperfluidSDK.Framework({
       web3: new Web3(web3.currentProvider),
     })
 
     await sdk.initialize()
     return sdk
-    // return {
-    //   sdk,
-    //   // core,
-    // }
   }
 
   const uploadImage = async (file) => {
