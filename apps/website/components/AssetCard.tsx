@@ -7,7 +7,7 @@ export default function AssetCard(props) {
   //   </div>
   // )
 
-  // console.log({ asset })
+  console.log({ asset })
 
   return (
     <div
@@ -18,12 +18,12 @@ export default function AssetCard(props) {
         <img className="h-48 w-full object-cover" src={asset.url} alt="" />
       </div>
       <div className="flex-1 bg-white p-6 flex flex-col justify-between">
-        <div className="flex-1">
+        {/* <div className="flex-1">
           <a href={asset.href} className="block mt-2">
             <p className="text-xl font-semibold text-gray-900">{asset.title}</p>
             <p className="mt-3 text-base text-gray-500">{asset.description}</p>
           </a>
-        </div>
+        </div> */}
 
         {/* <div className="mt-6 flex items-center">
           <div className="flex-shrink-0">

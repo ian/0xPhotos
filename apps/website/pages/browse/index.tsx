@@ -29,15 +29,17 @@ export default function Browse() {
           <BrowseFilters />
         </div>
         <div className="masonry-2-col w-full">
-          {elements?.map((e, i) => (
-            <div className="mb-5" key={`element-${i}`}>
-              <Link href={`/browse/${e.token_id}`}>
-                <a>
-                  <img src={e.external_data.image} />
-                </a>
-              </Link>
-            </div>
-          ))}
+          {elements
+            ?.filter((f) => f.external_data)
+            .map((e, i) => (
+              <div className="mb-5" key={`element-${i}`}>
+                <Link href={`/browse/${e.token_id}`}>
+                  <a>
+                    <img src={e.external_data?.image} />
+                  </a>
+                </Link>
+              </div>
+            ))}
         </div>
       </div>
     </Layout>

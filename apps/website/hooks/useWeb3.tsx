@@ -11,8 +11,15 @@ import TradeableCashflowContract from '../abi/TradeableCashflow.json'
 import USDCContract from '../abi/USDC.json'
 import USDCxContract from '../abi/USDCx.json'
 
+const assetContractAddress = '0x414b20594BDA01EA5903E16b56A82A28FCb80897'
 const fUSDC = '0xbe49ac1EadAc65dccf204D4Df81d650B50122aB2'
 const fUSDCx = '0x42bb40bF79730451B11f6De1CbA222F17b87Afd7'
+
+// USDC
+// const address = '0x42bb40bF79730451B11f6De1CbA222F17b87Afd7'
+
+// MATICx on Mumbai
+// const address = '0x96B82B65ACF7072eFEb00502F45757F254c2a0D4'
 
 function calculateFlowRate(amount) {
   let fr = amount / (86400 * 30)
@@ -81,9 +88,9 @@ export default function useProvider(): UseWeb3 {
       '...' +
       walletAddress.slice(walletAddress.length - 3, walletAddress.length)
 
-  const requireWeb3Enabled = () => {
-    if (!isWeb3Enabled) return enableWeb3()
-  }
+  // const requireWeb3Enabled = () => {
+  //   if (!isWeb3Enabled) return enableWeb3()
+  // }
 
   useEffect(() => {
     if (!isWeb3Enabled) enableWeb3()
@@ -133,7 +140,7 @@ export default function useProvider(): UseWeb3 {
   }
 
   const deployIncomeStream = async () => {
-    await requireWeb3Enabled()
+    // await requireWeb3Enabled()
 
     const { abi, bytecode } = TradeableCashflowContract
 
@@ -245,20 +252,8 @@ export default function useProvider(): UseWeb3 {
   }
 
   const upgradeSupertoken = async (amount: string) => {
-    await requireWeb3Enabled()
-
+    // await requireWeb3Enabled()
     const _amount = web3.utils.toWei(amount)
-
-    // USDC
-    // const address = '0x42bb40bF79730451B11f6De1CbA222F17b87Afd7'
-
-    // MATICx on Mumbai
-    // const address = '0x96B82B65ACF7072eFEb00502F45757F254c2a0D4'
-
-    // USDC
-    // const address = '0x42bb40bF79730451B11f6De1CbA222F17b87Afd7'
-
-    // const { abi } = USDCxContract
 
     // @ts-ignore ABI has weird signature?
     const contract = new web3.eth.Contract(USDCContract.abi, fUSDC)
@@ -283,9 +278,17 @@ export default function useProvider(): UseWeb3 {
     return flow.toString()
   }
 
+  // const getAssetNFTs = async () => {
+  //   const { abi } = AssetsContract
+  //   const contract = new web3.eth.Contract(abi, assetContractAddress)
+  //   return await contract.methods.userOwnedTokens.call(walletAddress)
+
+  //   // await contractx.methods.upgrade(_amount).send({ from: walletAddress })
+  // }
+
   // allows the market to transfer ownership of the income stream
   const approveMarket = async (streamAddress) => {
-    await requireWeb3Enabled()
+    // await requireWeb3Enabled()
 
     const address = '0x1dd14A3Ccc7D57852b7C11a9B633Be4e3aDC063F'
     const { abi, bytecode } = TradeableCashflowContract
@@ -298,15 +301,15 @@ export default function useProvider(): UseWeb3 {
   }
 
   const mintAssetNFT = async (tokenUri, price, streamAddress) => {
-    await requireWeb3Enabled()
+    // await requireWeb3Enabled()
 
     // const { ethAddress } = user.attributes
     const _price = web3.utils.toWei(price)
-    const address = '0x414b20594BDA01EA5903E16b56A82A28FCb80897'
+    // const address = '0x414b20594BDA01EA5903E16b56A82A28FCb80897'
     // const address = '0x506cd4e5B94bD24b2f60D96e5ED6430c5302188c'
     const { abi, bytecode } = AssetsContract
     // @ts-ignore ABI has weird signature?
-    const mintAsset = new web3.eth.Contract(abi, address)
+    const mintAsset = new web3.eth.Contract(abi, assetContractAddress)
 
     return mintAsset.methods
       .mint(tokenUri, _price, streamAddress)
@@ -314,7 +317,7 @@ export default function useProvider(): UseWeb3 {
   }
 
   const mintLicenseNFT = async (tokenUri) => {
-    await requireWeb3Enabled()
+    // await requireWeb3Enabled()
 
     console.log({ web3, Moralis, user })
     // const { ethAddress } = user.attributes

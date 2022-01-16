@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react'
 import { FileUploader } from 'baseui/file-uploader'
 import { Button } from 'baseui/button'
 
-import { useFakeProgress } from '../hooks/useFakeProgress'
+// import { useFakeProgress } from '../hooks/useFakeProgress'
 // import { deploy, mint } from '../lib/incomeStream'
 
+import { tempIndexNFT } from '../lib/api'
 import useWeb3 from '../hooks/useWeb3'
 
 import Layout from '../components/Layout'
@@ -42,13 +43,13 @@ export default function Mint() {
     const streamContract = await deployIncomeStream()
     const streamAddress = streamContract.address
 
-    console.debug('Approving Market to handle income stream')
-    await approveMarket(streamAddress).then(console.log)
+    // console.debug('Approving Market to handle income stream')
+    // await approveMarket(streamAddress).then(console.log)
 
     console.debug('Uploading JSON to IPFS')
     setMintStep('mint')
 
-    const { url: jsonIPFS } = await uploadJSON({
+    const json = {
       // Our fields
       ipfs: hash, // not needed just thought we should put this in there.
       streamAddress,
@@ -66,12 +67,20 @@ export default function Mint() {
       // Minter Royalties: https://docs.opensea.io/docs/contract-level-metadata
       seller_fee_basis_points: 100, // Indicates a 1% fee to minter.
       fee_recipient: walletAddress, // Where seller fees will be paid to.
-    })
+    }
+
+    const { url: jsonIPFS } = await uploadJSON(json)
 
     console.debug('Minting NFT')
     setMintStep('mint')
 
     await mintAssetNFT(jsonIPFS, '0.0001', streamAddress).then(console.log)
+
+    await tempIndexNFT({
+      ...json,
+      owner: walletAddress,
+      image: url,
+    })
 
     setMintStep('done')
   }

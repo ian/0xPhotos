@@ -1,3 +1,4 @@
+import * as yup from 'yup'
 import { FormControl } from 'baseui/form-control'
 import { Input } from 'baseui/input'
 import { Button } from 'baseui/button'
@@ -15,8 +16,16 @@ export default function AssetForm(props) {
       license: 'rm',
       photoCredit: '',
     },
+    validationSchema: yup.object().shape({
+      name: yup.string().required('Required'),
+      description: yup.string().required('Required'),
+      license: yup.string().required('Required'),
+      photoCredit: yup.string().required('Required'),
+    }),
     onSubmit,
   })
+
+  console.log({ formik })
 
   return (
     <div>
@@ -40,8 +49,9 @@ export default function AssetForm(props) {
         />
       </FormControl>
 
-      <FormControl label="Photo Credit">
+      <FormControl label="Photo Credit" error={formik.errors.photoCredit}>
         <Input
+          name="photoCredit"
           value={formik.values.photoCredit}
           onChange={formik.handleChange}
           placeholder="First Name"
@@ -60,7 +70,11 @@ export default function AssetForm(props) {
       </RadioGroup>
 
       <div className="mt-5">
-        <Button disabled={disabled} onClick={() => formik.handleSubmit()}>
+        <Button
+          disabled={disabled}
+          onClick={() => formik.handleSubmit()}
+          type="submit"
+        >
           {disabled ? 'Please upload photo first' : 'Mint Photo as NFT'}
         </Button>
       </div>

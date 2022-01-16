@@ -26,7 +26,9 @@
     "react-moralis": "^0.3.11",
     "styletron-engine-atomic": "^1.4.8",
     "styletron-react": "^6.0.2",
-    "web3": "^1.6.1"
+    "uuid": "^8.3.2",
+    "web3": "^1.6.1",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/react": "^17.0.38",
