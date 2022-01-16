@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import BrowseFilters from '../../components/BrowseFilters'
 import Layout from '../../components/Layout'
 import { algoliaSearch } from '../../lib/algolia'
+import { FAKE_MARKETPLACE } from '../../lib/fake'
 
 export default function Browse() {
   const [elements, setElements] = useState(null)
@@ -29,7 +30,7 @@ export default function Browse() {
           <BrowseFilters />
         </div>
         <div className="masonry-2-col w-full">
-          {elements
+          {/* {elements
             ?.filter((f) => f.external_data)
             .map((e, i) => (
               <div className="mb-5" key={`element-${i}`}>
@@ -39,7 +40,17 @@ export default function Browse() {
                   </a>
                 </Link>
               </div>
-            ))}
+            ))} */}
+
+          {FAKE_MARKETPLACE.map((e, i) => (
+            <div className="mb-5" key={`element-${i}`}>
+              <Link href={`/browse/${e.tokenId}`}>
+                <a>
+                  <img src={e.url} />
+                </a>
+              </Link>
+            </div>
+          ))}
         </div>
       </div>
     </Layout>

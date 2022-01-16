@@ -15,7 +15,7 @@ export default function Asset() {
   const { createOutputStream, uploadJSON, mintLicenseNFT, upgradeSupertoken } =
     useWeb3()
 
-  const [jsonIPFS, setJsonIPFS] = useState(null)
+  const [jsonIPFS, setJsonIPFS] = useState('1234')
   const [tx, setTx] = useState(null)
 
   // Test formdata
@@ -28,21 +28,21 @@ export default function Asset() {
   }
 
   const handleSubmit = async () => {
-    // setSubmitting(true)
+    setSubmitting(true)
     // console.debug('Uploading JSON to IPFS')
     // const { url: jsonIPFS } = await uploadJSON(formData)
     // setJsonIPFS(jsonIPFS)
     // console.log('JSON IPFS: ', jsonIPFS)
-    // handleMint(jsonIPFS).finally(() => setSubmitting(false))
+    handleMint(jsonIPFS).finally(() => setSubmitting(false))
 
     // TODO do we need this every time or just when you dont have enough USDCx
     // setSubmitting(true)
     // await upgradeSupertoken('10').then(() => setSubmitting(false))
 
-    setSubmitting(true)
-    createOutputStream('', 500)
-      .then(console.debug)
-      .finally(() => setSubmitting(false))
+    // setSubmitting(true)
+    // createOutputStream('', 500)
+    //   .then(console.debug)
+    //   .finally(() => setSubmitting(false))
   }
 
   const handleMint = async (jsonIPFS) => {
