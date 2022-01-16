@@ -29,17 +29,22 @@ export default function Asset() {
 
   const handleSubmit = async () => {
     setSubmitting(true)
-    // console.debug('Uploading JSON to IPFS')
+
+    console.debug('Uploading JSON to IPFS')
     // const { url: jsonIPFS } = await uploadJSON(formData)
-    // setJsonIPFS(jsonIPFS)
-    // console.log('JSON IPFS: ', jsonIPFS)
+
+    console.debug('Mintting License NFT')
     handleMint(jsonIPFS).finally(() => setSubmitting(false))
 
     // TODO do we need this every time or just when you dont have enough USDCx
     // setSubmitting(true)
     // await upgradeSupertoken('10').then(() => setSubmitting(false))
 
-    // setSubmitting(true)
+    // We need to figure out how to check for the existence of an open stream already.
+    // If the stream is open, don't call this, otherwise we need to open it.
+    // This is commented out since it will create a EVM fail when you've already opened a stream.
+    //
+    // console.debug('Creating Superfluid Outbound Stream')
     // createOutputStream('', 500)
     //   .then(console.debug)
     //   .finally(() => setSubmitting(false))
