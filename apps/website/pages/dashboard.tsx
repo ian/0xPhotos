@@ -1,8 +1,20 @@
 import { FAKE_MARKETPLACE } from '../lib/fake'
 import AssetCard from '../components/AssetCard'
 import Layout from '../components/Layout'
+import { useEffect } from 'react'
+import { useWeb3 } from '../hooks/useWeb3'
 
 export default function Dashboard() {
+  const { getNetFlow, isWeb3Enabled, web3 } = useWeb3()
+
+  useEffect(() => {
+    if (isWeb3Enabled) {
+      getNetFlow()
+        .then((amt) => web3.utils.fromWei(amt))
+        .then(console.debug)
+    }
+  }, [isWeb3Enabled])
+
   return (
     <Layout className="max-w-5xl mx-auto">
       <h1 className="my-5 font-serif text-4xl">My dashboard</h1>

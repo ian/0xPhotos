@@ -22,6 +22,13 @@ import USDCxContract from '../abi/USDCx.json'
 const fUSDC = '0xbe49ac1EadAc65dccf204D4Df81d650B50122aB2'
 const fUSDCx = '0x42bb40bF79730451B11f6De1CbA222F17b87Afd7'
 
+function calculateFlowRate(amount) {
+  let fr = amount / (86400 * 30)
+  // console.log({ fr })
+  return Math.floor(fr)
+}
+const MINIMUM_GAME_FLOW_RATE = '3858024691358'
+
 type DeployedContract = {
   address: string
 }
@@ -38,6 +45,7 @@ type UseWeb3 = {
   deployIncomeStream: () => Promise<DeployedContract>
   createOutputStream: (to: string, amount: any) => Promise<any>
   approveMarket: (address: string) => Promise<void>
+  getNetFlow: () => Promise<string>
   mintAssetNFT: (
     tokenUri: string,
     price: string,
@@ -46,7 +54,7 @@ type UseWeb3 = {
   mintLicenseNFT: (tokenUri: string) => Promise<any>
   uploadImage: (file: File) => Promise<DeployedIPFS>
   uploadJSON: (json: object) => Promise<DeployedIPFS>
-  upgradeSupertoken: (price: string) => Promise<DeployedContract>
+  upgradeSupertoken: (price: string) => Promise<void>
   walletAddress?: string
   truncatedWalletAddress?: string
 } & MoralisContextValue
@@ -209,13 +217,6 @@ export default function useProvider(): UseWeb3 {
   //   }
   // }
 
-  function calculateFlowRate(amount) {
-    let fr = amount / (86400 * 30)
-    console.log({ fr })
-    return Math.floor(fr)
-  }
-  const MINIMUM_GAME_FLOW_RATE = '3858024691358'
-
   const createOutputStream = async (to: string, amount) => {
     const sdk = await initSuperfluid()
 
@@ -322,6 +323,15 @@ export default function useProvider(): UseWeb3 {
     await contractx.methods.upgrade(_amount).send({ from: walletAddress })
   }
 
+  const getNetFlow = async () => {
+    const sdk = await initSuperfluid()
+    const flow = await sdk.cfa.getNetFlow({
+      superToken: fUSDCx,
+      account: walletAddress,
+    })
+    return flow.toString()
+  }
+
   // allows the market to transfer ownership of the income stream
   const approveMarket = async (streamAddress) => {
     await requireWeb3Enabled()
@@ -375,6 +385,7 @@ export default function useProvider(): UseWeb3 {
     uploadJSON,
     createOutputStream,
     upgradeSupertoken,
+    getNetFlow,
     mintLicenseNFT,
   }
 }
