@@ -16,6 +16,7 @@
     "algoliasearch": "^4.12.0",
     "baseui": "^10.7.2",
     "blockchain": "^1.0.6",
+    "formik": "^2.2.9",
     "headlessui": "link:headlessui",
     "moralis": "^0.0.184",
     "next": "12.0.8",

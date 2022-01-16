@@ -9,6 +9,7 @@ import useWeb3 from '../hooks/useWeb3'
 
 import Layout from '../components/Layout'
 import AssetForm from '../components/AssetForm'
+import MintModal from '../components/MintModal'
 
 export default function Mint() {
   const {
@@ -23,32 +24,37 @@ export default function Mint() {
     useFakeProgress()
 
   const [file, setFile] = useState(null)
+  const [mintStep, setMintStep] = useState('done')
   const [jsonIPFS, setJsonIPFS] = useState(null)
-  const [streamAddress, setStreamAddress] = useState(null)
+  // const [streamAddress, setStreamAddress] = useState(null)
 
   const handleDrop = async (acceptedFiles, rejectedFiles) => {
-    startFakeProgress()
+    // startFakeProgress()
+    const image = acceptedFiles[0]
+    setFile(image)
+  }
+
+  const handleMint = async (values) => {
+    console.debug('Uploading Image to IPFS')
+    setMintStep('ipfs')
+
+    const { url, hash } = await uploadImage(file)
+    // .finally(() =>
+    //   stopFakeProgress(),
+    // )
 
     console.debug('Deploying Income Stream Contract')
+    setMintStep('stream')
 
     const streamContract = await deployIncomeStream()
     const streamAddress = streamContract.address
-    setStreamAddress(streamAddress)
-    const image = acceptedFiles[0]
+    // setStreamAddress(streamAddress)
 
     console.debug('Approving Market to handle income stream')
-    handleApprove(streamAddress)
-
-    console.debug('Uploading Image to IPFS')
-
-    const { url, hash } = await uploadImage(image).finally(() =>
-      stopFakeProgress(),
-    )
+    await approveMarket(streamAddress).then(console.log)
 
     console.debug('Uploading JSON to IPFS')
-
-    setFile(image)
-    // setIPFS({ url, hash })
+    setMintStep('mint')
 
     const { url: jsonIPFS } = await uploadJSON({
       // Our fields
@@ -66,22 +72,17 @@ export default function Mint() {
       fee_recipient: walletAddress, // Where seller fees will be paid to.
     })
 
-    setJsonIPFS(jsonIPFS)
-  }
-
-  const handleMint = () => {
+    // setJsonIPFS(jsonIPFS)
     console.debug('Minting NFT')
-    mintAssetNFT(jsonIPFS, '0.0001', streamAddress).then(console.log)
-  }
+    setMintStep('mint')
 
-  const handleApprove = (streamAddress) => {
-    console.debug('Approving Market to handle income stream')
-    approveMarket(streamAddress).then(console.log)
+    await mintAssetNFT(jsonIPFS, '0.0001', streamAddress).then(console.log)
+
+    setMintStep('done')
   }
 
   return (
     <Layout className="max-w-4xl m-auto mt-10">
-      {/* <h1 className="mb-10">Mint</h1> */}
       <div className="grid grid-cols-2 gap-20">
         <div>
           {file ? (
@@ -89,11 +90,6 @@ export default function Mint() {
           ) : (
             <FileUploader
               accept="image/*"
-              disabled={!!progressAmount}
-              progressAmount={progressAmount}
-              progressMessage={
-                progressAmount ? `Uploading... ${progressAmount}% of 100%` : ''
-              }
               onCancel={stopFakeProgress}
               onDrop={handleDrop}
             />
@@ -101,12 +97,11 @@ export default function Mint() {
         </div>
 
         <div>
-          <AssetForm />
-          <Button disabled={!jsonIPFS} onClick={handleMint}>
-            Mint NFT
-          </Button>
+          <AssetForm disabled={!file} onSubmit={handleMint} />
         </div>
       </div>
+
+      {mintStep && <MintModal step={mintStep} isOpen={true} onClose={false} />}
     </Layout>
   )
 }
