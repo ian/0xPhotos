@@ -87,6 +87,21 @@ export default function Mint() {
 
   return (
     <Layout className="max-w-4xl m-auto mt-10">
+      <div className="mb-10">
+        <h1 className="text-4xl font-serif mb-5">
+          Upload Content to Mint Asset NFT
+        </h1>
+        <p className="text-gray-400 text-light mb-5">
+          When you create an Asset NFT, all royalties from licenses are sent to
+          the wallet that owns this NFT. Your content is minted as an ERC-721
+          token on the polygon network.
+        </p>
+        <p className="text-gray-400 text-light">
+          If you transfer or sell this NFT on a platform such as Rarible or
+          Zora, all royalties payments will be automatically sent to the new
+          owner.
+        </p>
+      </div>
       <div className="grid grid-cols-2 gap-20">
         <div>
           {file ? (
