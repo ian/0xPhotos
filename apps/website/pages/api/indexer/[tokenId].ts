@@ -1,5 +1,3 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-
 import { algoliaIndex } from '../../../lib/algolia'
 import { getAssetNFT } from '../../../lib/covalent'
 
