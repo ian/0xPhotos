@@ -12,7 +12,7 @@ export default function Asset() {
   const { id } = router.query
   const asset = FAKE_MARKETPLACE.find((f) => f.tokenId === id)
   const [isSubmitting, setSubmitting] = useState(false)
-  const { uploadJSON, mintLicenseNFT } = useWeb3()
+  const { uploadJSON, mintLicenseNFT, upgradeSupertoken } = useWeb3()
 
   const [jsonIPFS, setJsonIPFS] = useState(null)
   const [tx, setTx] = useState(null)
@@ -27,12 +27,14 @@ export default function Asset() {
   }
 
   const handleSubmit = async () => {
+    // setSubmitting(true)
+    // console.debug('Uploading JSON to IPFS')
+    // const { url: jsonIPFS } = await uploadJSON(formData)
+    // setJsonIPFS(jsonIPFS)
+    // console.log('JSON IPFS: ', jsonIPFS)
+    // handleMint(jsonIPFS).finally(() => setSubmitting(false))
     setSubmitting(true)
-    console.debug('Uploading JSON to IPFS')
-    const { url: jsonIPFS } = await uploadJSON(formData)
-    setJsonIPFS(jsonIPFS)
-    console.log('JSON IPFS: ', jsonIPFS)
-    handleMint(jsonIPFS).finally(() => setSubmitting(false))
+    upgradeSupertoken('0.0001').then(() => setSubmitting(false))
   }
 
   const handleMint = async (jsonIPFS) => {

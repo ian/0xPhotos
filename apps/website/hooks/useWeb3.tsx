@@ -1,14 +1,21 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { useMoralis, MoralisContextValue, MoralisProvider } from 'react-moralis'
+import { Framework } from '@superfluid-finance/sdk-core'
 
 import AssetsContract from '../abi/Assets.json'
 import LicensesContract from '../abi/Licenses.json'
-// import MarketContract from '../abi/Marketplace.json'
+import SuperFluidUpgrade from '../abi/SuperFluidUpgrade.json'
 import TradeableCashflowContract from '../abi/TradeableCashflow.json'
+
+import USDCContract from '../abi/USDC.json'
+import USDCxContract from '../abi/USDCx.json'
 
 // type Contract = {
 //   abi:
 // }
+
+const fUSDC = '0xbe49ac1EadAc65dccf204D4Df81d650B50122aB2'
+const fUSDCx = '0x42bb40bF79730451B11f6De1CbA222F17b87Afd7'
 
 type DeployedContract = {
   address: string
@@ -33,6 +40,7 @@ type UseWeb3 = {
   mintLicenseNFT: (tokenUri: string) => Promise<any>
   uploadImage: (file: File) => Promise<DeployedIPFS>
   uploadJSON: (json: object) => Promise<DeployedIPFS>
+  upgradeSupertoken: (price: string) => Promise<DeployedContract>
   walletAddress?: string
   truncatedWalletAddress?: string
 } & MoralisContextValue
@@ -70,6 +78,17 @@ export default function useProvider(): UseWeb3 {
 
   const requireWeb3Enabled = () => {
     if (!isWeb3Enabled) return enableWeb3()
+  }
+
+  useEffect(() => {
+    if (!isWeb3Enabled) enableWeb3()
+  }, [isWeb3Enabled])
+
+  const initSuperfluid = async () => {
+    const web3jsSf = await Framework.create({
+      networkName: 'matic',
+      provider: web3.currentProvider,
+    })
   }
 
   const uploadImage = async (file) => {
@@ -142,6 +161,35 @@ export default function useProvider(): UseWeb3 {
     }
   }
 
+  const upgradeSupertoken = async (amount: string) => {
+    await requireWeb3Enabled()
+
+    const _amount = web3.utils.toWei(amount)
+
+    // USDC
+    // const address = '0x42bb40bF79730451B11f6De1CbA222F17b87Afd7'
+
+    // MATICx on Mumbai
+    // const address = '0x96B82B65ACF7072eFEb00502F45757F254c2a0D4'
+
+    // USDC
+    // const address = '0x42bb40bF79730451B11f6De1CbA222F17b87Afd7'
+
+    // const { abi } = USDCxContract
+
+    // @ts-ignore ABI has weird signature?
+    const contract = new web3.eth.Contract(USDCContract.abi, fUSDC)
+    const contractx = new web3.eth.Contract(USDCxContract.abi, fUSDCx)
+
+    console.log({ user, web3, Moralis })
+
+    await contract.methods
+      .approve(fUSDCx, _amount)
+      .send({ from: walletAddress })
+
+    await contractx.methods.upgrade(_amount).send({ from: walletAddress })
+  }
+
   // allows the market to transfer ownership of the income stream
   const approveMarket = async (streamAddress) => {
     await requireWeb3Enabled()
@@ -193,6 +241,7 @@ export default function useProvider(): UseWeb3 {
     mintAssetNFT,
     uploadImage,
     uploadJSON,
+    upgradeSupertoken,
     mintLicenseNFT,
   }
 }
