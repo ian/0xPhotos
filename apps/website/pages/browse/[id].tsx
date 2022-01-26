@@ -5,15 +5,15 @@ import { Button } from 'baseui/button'
 
 import Layout from '../../components/Layout'
 import { FAKE_MARKETPLACE } from '../../lib/fake'
-import useWeb3 from '../../hooks/useWeb3'
+// import useWeb3 from '../../hooks/useWeb3'
 
 export default function Asset() {
   const router = useRouter()
   const { id } = router.query
   const asset = FAKE_MARKETPLACE.find((f) => f.tokenId === id)
   const [isSubmitting, setSubmitting] = useState(false)
-  const { createOutputStream, uploadJSON, mintLicenseNFT, upgradeSupertoken } =
-    useWeb3()
+  // const { createOutputStream, uploadJSON, mintLicenseNFT, upgradeSupertoken } =
+  //   useWeb3()
 
   const [jsonIPFS, setJsonIPFS] = useState('1234')
   const [tx, setTx] = useState(null)
@@ -27,36 +27,36 @@ export default function Asset() {
     assetTokenAddress: '0x0',
   }
 
-  const handleSubmit = async () => {
-    setSubmitting(true)
+  // const handleSubmit = async () => {
+  //   setSubmitting(true)
 
-    console.debug('Uploading JSON to IPFS')
-    // const { url: jsonIPFS } = await uploadJSON(formData)
+  //   console.debug('Uploading JSON to IPFS')
+  //   // const { url: jsonIPFS } = await uploadJSON(formData)
 
-    console.debug('Mintting License NFT')
-    handleMint(jsonIPFS).finally(() => setSubmitting(false))
+  //   console.debug('Mintting License NFT')
+  //   handleMint(jsonIPFS).finally(() => setSubmitting(false))
 
-    // TODO do we need this every time or just when you dont have enough USDCx
-    // setSubmitting(true)
-    // await upgradeSupertoken('10').then(() => setSubmitting(false))
+  //   // TODO do we need this every time or just when you dont have enough USDCx
+  //   // setSubmitting(true)
+  //   // await upgradeSupertoken('10').then(() => setSubmitting(false))
 
-    // We need to figure out how to check for the existence of an open stream already.
-    // If the stream is open, don't call this, otherwise we need to open it.
-    // This is commented out since it will create a EVM fail when you've already opened a stream.
-    //
-    // console.debug('Creating Superfluid Outbound Stream')
-    // createOutputStream('', 500)
-    //   .then(console.debug)
-    //   .finally(() => setSubmitting(false))
-  }
+  //   // We need to figure out how to check for the existence of an open stream already.
+  //   // If the stream is open, don't call this, otherwise we need to open it.
+  //   // This is commented out since it will create a EVM fail when you've already opened a stream.
+  //   //
+  //   // console.debug('Creating Superfluid Outbound Stream')
+  //   // createOutputStream('', 500)
+  //   //   .then(console.debug)
+  //   //   .finally(() => setSubmitting(false))
+  // }
 
-  const handleMint = async (jsonIPFS) => {
-    console.debug('Minting License NFT')
-    mintLicenseNFT(jsonIPFS).then((tx) => {
-      console.log('Minted License NFT: ', tx)
-      setTx(tx.transactionHash)
-    })
-  }
+  // const handleMint = async (jsonIPFS) => {
+  //   console.debug('Minting License NFT')
+  //   mintLicenseNFT(jsonIPFS).then((tx) => {
+  //     console.log('Minted License NFT: ', tx)
+  //     setTx(tx.transactionHash)
+  //   })
+  // }
 
   return (
     <Layout className="max-w-5xl mx-auto pt-10">
@@ -108,7 +108,7 @@ export default function Asset() {
               </div>
 
               <Button
-                onClick={handleSubmit}
+                // onClick={handleSubmit}
                 // @ts-ignore className works IDK why it's complaining
                 className="w-full"
                 isLoading={isSubmitting}

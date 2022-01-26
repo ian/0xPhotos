@@ -13,14 +13,14 @@ import AssetForm from '../components/AssetForm'
 import MintModal from '../components/MintModal'
 
 export default function Mint() {
-  const {
-    walletAddress,
-    deployIncomeStream,
-    approveMarket,
-    uploadImage,
-    uploadJSON,
-    mintAssetNFT,
-  } = useWeb3()
+  // const {
+  //   walletAddress,
+  //   deployIncomeStream,
+  //   approveMarket,
+  //   uploadImage,
+  //   uploadJSON,
+  //   mintAssetNFT,
+  // } = useWeb3()
 
   const [file, setFile] = useState(null)
   const [mintStep, setMintStep] = useState(null)
@@ -31,59 +31,59 @@ export default function Mint() {
     setFile(image)
   }
 
-  const handleMint = async (values) => {
-    console.debug('Uploading Image to IPFS')
-    setMintStep('ipfs')
+  // const handleMint = async (values) => {
+  //   console.debug('Uploading Image to IPFS')
+  //   setMintStep('ipfs')
 
-    const { url, hash } = await uploadImage(file)
+  //   const { url, hash } = await uploadImage(file)
 
-    console.debug('Deploying Income Stream Contract')
-    setMintStep('stream')
+  //   console.debug('Deploying Income Stream Contract')
+  //   setMintStep('stream')
 
-    const streamContract = await deployIncomeStream()
-    const streamAddress = streamContract.address
+  //   const streamContract = await deployIncomeStream()
+  //   const streamAddress = streamContract.address
 
-    // console.debug('Approving Market to handle income stream')
-    // await approveMarket(streamAddress).then(console.log)
+  //   // console.debug('Approving Market to handle income stream')
+  //   // await approveMarket(streamAddress).then(console.log)
 
-    console.debug('Uploading JSON to IPFS')
-    setMintStep('mint')
+  //   console.debug('Uploading JSON to IPFS')
+  //   setMintStep('mint')
 
-    const json = {
-      // Our fields
-      ipfs: hash, // not needed just thought we should put this in there.
-      streamAddress,
+  //   const json = {
+  //     // Our fields
+  //     ipfs: hash, // not needed just thought we should put this in there.
+  //     streamAddress,
 
-      // Metadata Standards https://docs.opensea.io/docs/metadata-standards
-      // name: '@todo - Name',
-      // description: '@todo - Description',
+  //     // Metadata Standards https://docs.opensea.io/docs/metadata-standards
+  //     // name: '@todo - Name',
+  //     // description: '@todo - Description',
 
-      // values will be name, description, photoCredit, license,
-      ...values,
+  //     // values will be name, description, photoCredit, license,
+  //     ...values,
 
-      image: url,
-      external_url: `https://0xphotos.com/ipfs/${hash}`,
+  //     image: url,
+  //     external_url: `https://0xphotos.com/ipfs/${hash}`,
 
-      // Minter Royalties: https://docs.opensea.io/docs/contract-level-metadata
-      seller_fee_basis_points: 100, // Indicates a 1% fee to minter.
-      fee_recipient: walletAddress, // Where seller fees will be paid to.
-    }
+  //     // Minter Royalties: https://docs.opensea.io/docs/contract-level-metadata
+  //     seller_fee_basis_points: 100, // Indicates a 1% fee to minter.
+  //     fee_recipient: walletAddress, // Where seller fees will be paid to.
+  //   }
 
-    const { url: jsonIPFS } = await uploadJSON(json)
+  //   const { url: jsonIPFS } = await uploadJSON(json)
 
-    console.debug('Minting NFT')
-    setMintStep('mint')
+  //   console.debug('Minting NFT')
+  //   setMintStep('mint')
 
-    await mintAssetNFT(jsonIPFS, '0.0001', streamAddress).then(console.log)
+  //   await mintAssetNFT(jsonIPFS, '0.0001', streamAddress).then(console.log)
 
-    await tempIndexNFT({
-      ...json,
-      owner: walletAddress,
-      image: url,
-    })
+  //   await tempIndexNFT({
+  //     ...json,
+  //     owner: walletAddress,
+  //     image: url,
+  //   })
 
-    setMintStep('done')
-  }
+  //   setMintStep('done')
+  // }
 
   return (
     <Layout className="max-w-4xl m-auto mt-10">
@@ -111,9 +111,7 @@ export default function Mint() {
           )}
         </div>
 
-        <div>
-          <AssetForm disabled={!file} onSubmit={handleMint} />
-        </div>
+        <div>{/* <AssetForm disabled={!file} onSubmit={handleMint} /> */}</div>
       </div>
 
       {mintStep && <MintModal step={mintStep} isOpen={true} onClose={false} />}
