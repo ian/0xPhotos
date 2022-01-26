@@ -21,9 +21,9 @@ function MyApp({ Component, pageProps }) {
     <AnalyticsProvider plugins={plugins}>
       <StyletronProvider value={styletron}>
         <BaseProvider theme={LightTheme}>
-          <Web3Provider>
-            <Component {...pageProps} />
-          </Web3Provider>
+          {/* <Web3Provider> */}
+          <Component {...pageProps} />
+          {/* </Web3Provider> */}
         </BaseProvider>
       </StyletronProvider>
     </AnalyticsProvider>
