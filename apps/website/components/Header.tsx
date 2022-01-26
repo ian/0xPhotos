@@ -2,17 +2,20 @@ import { Popover } from '@headlessui/react'
 import { MenuIcon } from '@heroicons/react/outline'
 import Link from 'next/link'
 
-import useWeb3 from '../hooks/useWeb3'
+// import useWeb3 from '../hooks/useWeb3'
 
 export default function Header() {
-  const { authenticate, isAuthenticated, truncatedWalletAddress } = useWeb3()
+  // const { authenticate, isAuthenticated, truncatedWalletAddress } = useWeb3()
 
-  const handleLogin = async () => {
-    authenticate({
-      // provider: 'walletconnect',
-      chainId: parseInt(process.env.NEXT_PUBLIC_ETH_CHAIN_ID),
-    })
-  }
+  // const handleLogin = async () => {
+  //   authenticate({
+  //     // provider: 'walletconnect',
+  //     chainId: parseInt(process.env.NEXT_PUBLIC_ETH_CHAIN_ID),
+  //   })
+  // }
+
+  const isAuthenticated = false
+  const truncatedWalletAddress = null
 
   return (
     <Popover className="relative bg-black text-white">
@@ -31,13 +34,13 @@ export default function Header() {
           </div>
 
           <div className="hidden md:flex items-center justify-end md:flex-grow lg:w-0 space-x-5">
-            <Link href="/browse">
+            <Link href="/">
               <a className="flex space-x-2 items-center border-2 border-transparent hover:border-gray-500 px-3  py-1 rounded-full whitespace-nowrap">
                 Browse
               </a>
             </Link>
 
-            <Link href="/live">
+            <Link href="/">
               <a className="flex space-x-2 items-center border-2 border-transparent hover:border-gray-500 px-3  py-1 rounded-full whitespace-nowrap">
                 Live Events
               </a>
@@ -73,7 +76,7 @@ export default function Header() {
 
                 <a
                   className="flex space-x-2 items-center border-2 bg-white text-black cursor-pointer hover:bg-gray-300 px-3 py-1 rounded-full whitespace-nowrap"
-                  onClick={handleLogin}
+                  // onClick={handleLogin}
                 >
                   Connect Wallet
                 </a>

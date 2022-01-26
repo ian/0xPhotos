@@ -6,37 +6,37 @@ import { webClient } from '../lib/algolia'
 import { FAKE_MARKETPLACE } from '../lib/fake'
 
 export default function Dashboard() {
-  const {
-    // getAssetNFTs,
-    walletAddress,
-    getNetFlow,
-    isWeb3Enabled,
-    web3,
-    Moralis,
-    getfUSDCxBalance,
-    listInFlows,
-    // calculateStreamPerSecond,
-  } = useWeb3()
+  // const {
+  //   // getAssetNFTs,
+  //   walletAddress,
+  //   getNetFlow,
+  //   isWeb3Enabled,
+  //   web3,
+  //   Moralis,
+  //   getfUSDCxBalance,
+  //   listInFlows,
+  //   // calculateStreamPerSecond,
+  // } = useWeb3()
 
-  const [netFlow, setNetFlow] = useState(null)
-  const [tokens, setTokens] = useState(null)
-  const [fUSDCxBalance, setfUSDCxBalance] = useState(null)
-  const [totalMonthlyInflow, setTotalMonthlyInflow] = useState(null)
+  // const [netFlow, setNetFlow] = useState(null)
+  // const [tokens, setTokens] = useState(null)
+  // const [fUSDCxBalance, setfUSDCxBalance] = useState(null)
+  // const [totalMonthlyInflow, setTotalMonthlyInflow] = useState(null)
 
-  useEffect(() => {
-    if (isWeb3Enabled) {
-      getNetFlow()
-        .then((amt) => web3.utils.fromWei(amt))
-        .then((res) => Math.abs(parseFloat(res)))
-        .then(setNetFlow)
+  // useEffect(() => {
+  //   if (isWeb3Enabled) {
+  //     getNetFlow()
+  //       .then((amt) => web3.utils.fromWei(amt))
+  //       .then((res) => Math.abs(parseFloat(res)))
+  //       .then(setNetFlow)
 
-      webClient
-        .initIndex('Search')
-        .search(walletAddress)
-        .then((res) => res.hits)
-        .then(setTokens)
-    }
-  }, [isWeb3Enabled])
+  //     webClient
+  //       .initIndex('Search')
+  //       .search(walletAddress)
+  //       .then((res) => res.hits)
+  //       .then(setTokens)
+  //   }
+  // }, [isWeb3Enabled])
 
   // useEffect(() => {
   //   const timeout = setInterval(async () => {

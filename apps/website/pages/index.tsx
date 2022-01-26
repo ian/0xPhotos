@@ -22,7 +22,7 @@ export default function Home() {
               </p>
 
               <div className="mt-10 flex space-x-5">
-                <Link href="/browse">
+                <Link href="/">
                   <a className="bg-black text-white p-4">
                     Browse the collection
                   </a>
