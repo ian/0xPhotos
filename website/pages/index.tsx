@@ -1,5 +1,6 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import Link from "next/link"
+import HowItWorks from "../components/HowItWorks"
+import Layout from "../components/Layout"
 
 export default function Home() {
   return (
@@ -7,7 +8,7 @@ export default function Home() {
       {/* <h1 className="mb-10 p-40 text-center text-2xl font-bold">Homepage</h1> */}
       <div
         className="bg-cover"
-        style={{ backgroundImage: 'url(/images/homepage_bg.png)', height: 680 }}
+        style={{ backgroundImage: "url(/images/homepage_bg.png)", height: 680 }}
       >
         <div className="max-w-3xl mx-auto h-full flex items-center">
           <div className="text-white">
@@ -36,6 +37,10 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="py-10 bg-seagreen">
+        <HowItWorks className="max-w-5xl mx-auto" />
       </div>
     </Layout>
   )
