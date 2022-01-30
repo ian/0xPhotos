@@ -14,9 +14,13 @@
     "prettier": "^2.5.1"
   },
   "prettier": {
-    "semi": false,
-    "singleQuote": true,
     "useTabs": false,
-    "trailingComma": "all"
+    "printWidth": 80,
+    "tabWidth": 2,
+    "singleQuote": false,
+    "trailingComma": "none",
+    "jsxBracketSameLine": false,
+    "semi": false,
+    "rcVerbose": true
   }
 }
