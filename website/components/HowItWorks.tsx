@@ -2,37 +2,36 @@ export default function HowItWorks(props) {
   const { className } = props
   return (
     <section className={className}>
-      <h3 className="text-xl font-semibold">How 0xPhoto works</h3>
+      <h3 className="text-4xl font-semibold">How it works</h3>
       <div className="grid grid-cols-2 gap-10 mt-10">
         <div className="flex flex-col space-y-5 items-start">
-          <img src="/images/camera.svg" alt="Camera" className="h-8" />
-          <p>
-            Provide your high quality images and content for other creatives to
-            use. The more you create and share, the more opporunities you have
-            to earn.{" "}
+          <h2 className="text-xl font-medium">Premium Contributors</h2>
+          <p className="text-gray-500">
+            All contributors are screened for the highest quality so we can
+            curate the best collection to support your creative projects.
           </p>
         </div>
         <div className="flex flex-col space-y-5 items-start">
-          <img src="/images/chart_pie.svg" alt="Pie Chart" className="h-8" />
-          <p>
-            You set your base price (we’ll give you a suggestion). Wider use of
-            your image will increase the price buyers pay. You will keep 98% of
-            the price as your royalty.
+          <h2 className="text-xl font-medium">Content minted as NFTs</h2>
+          <p className="text-gray-500">
+            All content and licenses are minted as NFTs ensuring trustless proof
+            of ownership and permanence. NFTs can be sold along with master
+            rights at any time.
           </p>
         </div>
         <div className="flex flex-col space-y-5 items-start">
-          <img src="/images/lightning.svg" alt="Lightning" className="h-8" />
-          <p>
-            We turn your content into an NFT. This NFT becomes an asset that
-            earns royalty payments - giving you full control.{" "}
+          <h2 className="text-xl font-medium">USDC Compatible</h2>
+          <p className="text-gray-500">
+            Every license can be paid up front and directly to your wallet.
+            Withdraw anytime directly to your bank account.
           </p>
         </div>
         <div className="flex flex-col space-y-5 items-start">
-          <img src="/images/hourglass.svg" alt="Hourglass" className="h-8" />
-          <p>
-            Royalties are paid upfront or streamed every second to the holder of
-            the NFT. You can sell, trade, finance the NFT through other NFT and
-            Defi Protocols.{" "}
+          <h2 className="text-xl font-medium">Manage your portfolio</h2>
+          <p className="text-gray-500">
+            Your real-time dashboard helps you see which licenses are valid or
+            expiring. Contributors see future earnings and focus on delivering
+            high demand content.
           </p>
         </div>
       </div>

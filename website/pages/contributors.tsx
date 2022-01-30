@@ -41,7 +41,7 @@ export default function Home() {
           <h2 className="text-lg text-gray-400 leading-8 mt-2">
             The world needs your creative perspective – and you deserve to be
             paid properly. Stop giving up huge royalties to other platforms and
-            join us. You keep 98% of all royalties with our low 2% platform
+            join us. You keep 95% of all royalties with our low 2% platform
             fees.
           </h2>
 

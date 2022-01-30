@@ -41,8 +41,8 @@ export default function Home() {
 
       <div className="py-20 bg-seagreen">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-4xl font-sans">0xPhotos is different</h2>
-          <div className="grid grid-cols-3 mt-20">
+          <h2 className="text-4xl font-semibold">0xPhotos is different</h2>
+          <div className="grid grid-cols-3 mt-20 gap-10">
             <section>
               <img src="/images/person_group.svg" alt="" />
               <h3 className="mt-5 text-xl font-medium">Built for Creators</h3>
@@ -52,7 +52,7 @@ export default function Home() {
               </p>
             </section>
             <section>
-              <img src="/images/person_group.svg" alt="" />
+              <img src="/images/link.svg" alt="" />
               <h3 className="mt-5 text-xl font-medium">Powered by Polygon</h3>
               <p className="mt-5">
                 All transactions are executed on-chain with NFTs on the Polygon
@@ -60,7 +60,7 @@ export default function Home() {
               </p>
             </section>
             <section>
-              <img src="/images/person_group.svg" alt="" />
+              <img src="/images/burst.svg" alt="" />
               <h3 className="mt-5 text-xl font-medium">Simple Payments</h3>
               <p className="mt-5">
                 Get paid easily in USD and withdraw right to your bank account.
