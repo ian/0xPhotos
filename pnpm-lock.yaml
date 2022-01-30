@@ -61,6 +61,7 @@ importers:
       react: 17.0.2
       react-dom: 17.0.2
       react-dropzone: ^11.5.1
+      react-icons: ^4.3.1
       react-moralis: ^0.3.11
       styletron-engine-atomic: ^1.4.8
       styletron-react: ^6.0.2
@@ -88,6 +89,7 @@ importers:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       react-dropzone: 11.5.1_react@17.0.2
+      react-icons: 4.3.1_react@17.0.2
       react-moralis: 0.3.11_760ed2c45b025d4314c17a0dddbcad20
       styletron-engine-atomic: 1.4.8
       styletron-react: 6.0.2_react@17.0.2
@@ -11649,6 +11651,14 @@ packages:
       use-sidecar: 1.0.5_react@17.0.2
     transitivePeerDependencies:
       - '@types/react'
+    dev: false
+
+  /react-icons/4.3.1_react@17.0.2:
+    resolution: {integrity: sha512-cB10MXLTs3gVuXimblAdI71jrJx8njrJZmNMEMC+sQu5B/BIOmlsAjskdqpn81y8UBVEGuHODd7/ci5DvoSzTQ==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 17.0.2
     dev: false
 
   /react-input-mask/2.0.4_react-dom@17.0.2+react@17.0.2:
