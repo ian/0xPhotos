@@ -1,6 +1,6 @@
-import { Popover } from '@headlessui/react'
-import { MenuIcon } from '@heroicons/react/outline'
-import Link from 'next/link'
+import { Popover } from "@headlessui/react"
+import { MenuIcon } from "@heroicons/react/outline"
+import Link from "next/link"
 
 // import useWeb3 from '../hooks/useWeb3'
 
@@ -21,7 +21,7 @@ export default function Header() {
     <Popover className="relative bg-black text-white">
       <div className="max-w-5xl mx-auto">
         <div className="flex justify-between items-center py-4 md:justify-start md:space-x-10">
-          <div className="flex justify-start lg:w-0 lg:flex-1 font-serif text-xl">
+          <div className="flex justify-start lg:w-0 lg:flex-1 font-serif text-2xl">
             <Link href="/">
               <a>0xPhotos</a>
             </Link>
