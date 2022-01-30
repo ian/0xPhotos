@@ -34,7 +34,7 @@ export default function Header() {
           </div>
 
           <div className="hidden md:flex items-center justify-end md:flex-grow lg:w-0 space-x-5">
-            <Link href="/">
+            {/* <Link href="/">
               <a className="flex space-x-2 items-center border-2 border-transparent hover:border-gray-500 px-3  py-1 rounded-full whitespace-nowrap">
                 Browse
               </a>
@@ -44,7 +44,7 @@ export default function Header() {
               <a className="flex space-x-2 items-center border-2 border-transparent hover:border-gray-500 px-3  py-1 rounded-full whitespace-nowrap">
                 Live Events
               </a>
-            </Link>
+            </Link> */}
 
             {isAuthenticated ? (
               <>
@@ -74,12 +74,12 @@ export default function Header() {
                   </a>
                 </Link>
 
-                <a
+                {/* <a
                   className="flex space-x-2 items-center border-2 bg-white text-black cursor-pointer hover:bg-gray-300 px-3 py-1 rounded-full whitespace-nowrap"
                   // onClick={handleLogin}
                 >
                   Connect Wallet
-                </a>
+                </a> */}
               </>
             )}
           </div>
