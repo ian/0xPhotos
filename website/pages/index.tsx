@@ -145,9 +145,7 @@ const ComingSoonModal = ({ isOpen, onClose }) => {
 
           <div className="flex space-x-5">
             <Link href="/contributors">
-              <a className="bg-black text-white p-4">
-                Apply to become a contributor
-              </a>
+              <a className="bg-black text-white p-4">Become a contributor</a>
             </Link>
 
             <Link href="https://discord.com/invite/rJuvwGQ9YB">
@@ -156,7 +154,7 @@ const ComingSoonModal = ({ isOpen, onClose }) => {
                 className="text-white p-4 flex items-center"
                 style={{ background: "#7289DA" }}
               >
-                <IoLogoDiscord className="mr-2" /> Join us on Discord
+                <IoLogoDiscord className="mr-2" /> Join our Discord
               </a>
             </Link>
           </div>
