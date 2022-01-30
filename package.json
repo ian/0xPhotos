@@ -1,10 +1,11 @@
 {
-  "name": "monorepo",
+  "name": "0xphotos",
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "env-cmd pnpm m run dev",
+    "build": "pnpm m run build",
+    "dev": "pnpm m run dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,9 +15,13 @@
     "prettier": "^2.5.1"
   },
   "prettier": {
-    "semi": false,
-    "singleQuote": true,
     "useTabs": false,
-    "trailingComma": "all"
+    "printWidth": 80,
+    "tabWidth": 2,
+    "singleQuote": false,
+    "trailingComma": "none",
+    "jsxBracketSameLine": false,
+    "semi": false,
+    "rcVerbose": true
   }
 }
