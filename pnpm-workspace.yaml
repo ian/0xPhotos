@@ -1,8 +1,9 @@
 prefer-workspace-packages: true
 packages:
   # all packages in subdirs of packages/ and components/
-  - "apps/**"
+  - 'blockchain'
+  - 'website'
   # - 'packages/**'
   # - 'components/**'
   # exclude packages that are inside test directories
-  - "!**/test/**"
+  - '!**/test/**'

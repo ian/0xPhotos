@@ -1,5 +1,5 @@
 {
-  "name": "0xphotos",
+  "name": "website",
   "private": true,
   "scripts": {
     "dev": "next dev",
