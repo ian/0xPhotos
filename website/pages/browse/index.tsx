@@ -1,11 +1,11 @@
-import Head from 'next/head'
-import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import Head from "next/head"
+import Link from "next/link"
+import { useEffect, useState } from "react"
 // import Grid from '../../components/Grid'
-import BrowseFilters from '../../components/BrowseFilters'
-import Layout from '../../components/Layout'
-import { algoliaSearch } from '../../lib/algolia'
-import { FAKE_MARKETPLACE } from '../../lib/fake'
+import BrowseFilters from "../../components/BrowseFilters"
+import Layout from "../../components/Layout"
+import { algoliaSearch } from "../../lib/algolia"
+import { FAKE_MARKETPLACE } from "../../lib/fake"
 
 export default function Browse() {
   const [elements, setElements] = useState(null)
@@ -46,7 +46,7 @@ export default function Browse() {
             <div className="mb-5" key={`element-${i}`}>
               <Link href={`/browse/${e.tokenId}`}>
                 <a>
-                  <img src={e.url} />
+                  <img src={e.url} alt={e.url} />
                 </a>
               </Link>
             </div>

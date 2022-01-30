@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "(cd apps/website && yarn dev)",
+    "build": "pnpm m run build",
+    "dev": "pnpm m run dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

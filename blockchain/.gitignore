@@ -1,10 +1,10 @@
-/data
-/node_modules
+data
+node_modules
 
-/coverage.json
-/coverage
-/.env
-/data
+coverage.json
+coverage
+.env
+data
 *.ignore.*
 .DS_Store
 
