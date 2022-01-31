@@ -23,5 +23,8 @@
     "jsxBracketSameLine": false,
     "semi": false,
     "rcVerbose": true
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
